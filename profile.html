@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALT & CO - Profile</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fffaf0;
+            color: #5c4026;
+        }
+        /* HEADER FOTO SAJA */
+        header {
+            background: url("header.png") center center / cover no-repeat;
+            width: 100%;
+            height: 250px;
+            padding: 0;
+        }
+        /* NAVIGATION */
+        nav {
+            background: #fff0bd;
+            padding: 17px 10px;
+            text-align: center;
+            border-bottom: 1px solid #f0dfad;
+        }
+        nav a {
+            display: inline-block;
+            color: #60451f;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 6px 12px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #c18b20;
+            transform: translateY(-2px);
+        }
+        /* BANNER */
+        .banner {
+            padding: 65px 20px;
+            text-align: center;
+            background:
+                radial-gradient(circle at 10% 20%, #fff8d9 0 9%, transparent 10%),
+                radial-gradient(circle at 90% 80%, #ffe8a3 0 10%, transparent 11%),
+                linear-gradient(135deg, #fff1bd, #fff9e9);
+        }
+        .tagline {
+            display: inline-block;
+            background: #fffdf4;
+            color: #9c7027;
+            padding: 9px 17px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .banner h2 {
+            font-size: 43px;
+            line-height: 1.2;
+            margin: 22px 0 15px;
+            color: #5c4026;
+        }
+        .banner h2 span {
+            color: #c18b20;
+        }
+        .banner p {
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #77633e;
+        }
+        /* CONTENT */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+        .content {
+            background: #fffefa;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 20px;
+            border: 1px solid #f0e1bd;
+            box-shadow: 0 5px 18px #78572b0b;
+            line-height: 1.8;
+        }
+        .content h2 {
+            color: #694923;
+            text-align: center;
+            font-size: 27px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .content p {
+            color: #77633e;
+            font-size: 15px;
+        }
+        .highlight {
+            color: #b37b17;
+            font-weight: bold;
+        }
+        /* SECTION TITLE */
+        .section-heading {
+            text-align: center;
+            margin: 45px 0 30px;
+        }
+        .section-label {
+            color: #bd8b30;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        .section-heading h2 {
+            font-size: 30px;
+            margin: 12px 0;
+            color: #5c4026;
+        }
+        .section-heading p {
+            color: #8d775b;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        /* VALUE CARDS */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .card {
+            background: #fffefa;
+            border: 1px solid #f0e1bd;
+            border-radius: 20px;
+            width: 260px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 5px 18px #78572b0b;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px #9d78351b;
+            border-color: #e5c56e;
+        }
+        .card-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 15px;
+            background: #fff3cd;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+        }
+        .card h3 {
+            color: #694923;
+            font-size: 17px;
+            margin: 10px 0;
+        }
+        .card p {
+            color: #8d775b;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+        /* VISION & MISSION */
+        .mission-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mission-list li {
+            background: #fff8e3;
+            border: 1px solid #f0e1bd;
+            border-radius: 12px;
+            padding: 13px 16px;
+            margin: 10px 0;
+            line-height: 1.7;
+        }
+        /* STORE INFORMATION */
+        .info {
+            background: linear-gradient(120deg, #fff1bd, #fff9e9);
+            padding: 20px 25px;
+            border-radius: 18px;
+            border: 1px solid #f0d68b;
+        }
+        .info p {
+            margin: 12px 0;
+            line-height: 1.8;
+        }
+        .info b {
+            color: #694923;
+        }
+        /* FOOTER */
+        footer {
+            background: #67482b;
+            color: #fff3d4;
+            text-align: center;
+            padding: 30px 15px;
+        }
+        footer h3 {
+            letter-spacing: 3px;
+            margin: 0 0 10px;
+        }
+        footer p {
+            font-size: 12px;
+            line-height: 1.8;
+            margin: 6px 0;
+        }
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            header {
+                height: 170px;
+                background-position: center;
+            }
+            nav {
+                padding: 12px 5px;
+            }
+            nav a {
+                margin: 7px;
+                font-size: 11px;
+            }
+            .banner {
+                padding: 55px 18px;
+            }
+            .banner h2 {
+                font-size: 34px;
+            }
+            .banner p {
+                font-size: 14px;
+            }
+            .container {
+                width: 92%;
+                margin: 30px auto;
+            }
+            .content {
+                padding: 22px 18px;
+            }
+            .content h2 {
+                font-size: 23px;
+            }
+            .section-heading h2 {
+                font-size: 26px;
+            }
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+            .info {
+                padding: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER FOTO SAJA -->
+    <header></header>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="home.html">🏠 HOME</a>
+        <a href="profile.html">ABOUT US</a>
+        <a href="product.html">🛍️ PRODUCT</a>
+        <a href="checkout.html">🛒 CHECKOUT</a>
+        <a href="contact.html">📩 CONTACT</a>
+        <a href="review.html">⭐ REVIEW</a>
+    </nav>
+    <!-- BANNER -->
+    <section class="banner">
+        <span class="tagline">♡ GET TO KNOW US ♡</span>
+        <h2>
+            About <span>SALT & CO</span> 🥐
+        </h2>
+        <p>
+            Welcome to our little bakery! 💛<br>
+            Tempat terbaik untuk menemukan salt bread
+            yang lezat, lembut, dan dibuat dengan cinta.
+        </p>
+    </section>
+    <main class="container">
+        <!-- ABOUT US -->
+        <section class="content">
+            <h2>🥐 Who We Are</h2>
+            <p>
+                <span class="highlight">SALT & CO</span>
+                adalah marketplace yang menyediakan berbagai
+                macam salt bread dengan pilihan rasa yang
+                lezat dan harga yang terjangkau.
+            </p>
+            <p>
+                Kami menghadirkan berbagai varian rasa,
+                mulai dari rasa manis seperti
+                Strawberry, Dancow, Chocolate, Bolognese, Original,
+                hingga rasa gurih seperti Ham & Cheese.
+            </p>
+            <p>
+                Kami percaya bahwa setiap gigitan salt bread
+                dapat memberikan kebahagiaan. Karena itu,
+                kami ingin menghadirkan pengalaman berbelanja
+                yang mudah, menyenangkan, dan berkesan.
+            </p>
+        </section>
+        <!-- OUR VALUES -->
+        <section>
+            <div class="section-heading">
+                <span class="section-label">WHAT MAKES US SPECIAL</span>
+                <h2>Our Values ♡</h2>
+                <p>
+                    Tiga hal yang menjadi bagian dari
+                    pengalaman SALT & CO.
+                </p>
+            </div>
+            <div class="features">
+                <div class="card">
+                    <div class="card-icon">🥐</div>
+                    <h3>Freshly Baked</h3>
+                    <p>
+                        Mengutamakan salt bread yang fresh
+                        dan nikmat untuk pelanggan.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💛</div>
+                    <h3>Made with Love</h3>
+                    <p>
+                        Mengutamakan kualitas produk
+                        dan kepuasan pelanggan dalam
+                        setiap pesanan.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3>Affordable Price</h3>
+                    <p>
+                        Pilihan salt bread lezat dengan
+                        harga yang ramah di kantong.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- VISION -->
+        <section class="content" style="margin-top: 45px;">
+            <h2>🌟 Our Vision</h2>
+            <p>
+                Menjadi marketplace salt bread favorit
+                yang dikenal karena kualitas produk,
+                kelezatan rasa, dan pelayanan terbaik
+                bagi setiap pelanggan.
+            </p>
+        </section>
+        <!-- MISSION -->
+        <section class="content">
+            <h2>🎯 Our Mission</h2>
+            <ul class="mission-list">
+                <li>🥐 Menyediakan salt bread yang lezat dan berkualitas.</li>
+                <li>💛 Memberikan pelayanan yang ramah dan terbaik.</li>
+                <li>💰 Menawarkan harga yang terjangkau.</li>
+                <li>✨ Menghadirkan beragam pilihan rasa yang menarik.</li>
+                <li>🛍️ Memudahkan pelanggan dalam memilih dan memesan produk.</li>
+            </ul>
+        </section>
+        <!-- STORE INFORMATION -->
+        <section class="content">
+            <h2>📍 Store Information</h2>
+            <div class="info">
+                <p>
+                    🏪 <b>Store Name:</b> SALT & CO
+                </p>
+                <p>
+                    📍 <b>Location:</b>
+                    Jl. Belitung No. 8, Merdeka, Kecamatan
+                    Sumur Bandung, Kota Bandung, Jawa Barat 40113
+                </p>
+                <p>
+                    🕒 <b>Opening Hours:</b>
+                    Senin–Sabtu, 08.00–17.00 WIB
+                </p>
+                <p>
+                    🛒 <b>Shopping Method:</b>
+                    Online Marketplace
+                </p>
+                <p>
+                    🥐 <b>Specialty:</b>
+                    Sweet & Savory Salt Bread
+                </p>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <footer>
+        <h3>SALT & CO 🥐</h3>
+        <p>Freshly Baked · Soft · Delicious</p>
+        <p>Copyright © 2026 SALT & CO Marketplace</p>
+        <p>Made with ♡ and freshly baked every day.</p>
+    </footer>
+</body>
+</html>

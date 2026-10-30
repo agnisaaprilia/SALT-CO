@@ -1,0 +1,1162 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SALT & CO - Checkout</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fffaf0;
+    color: #5c4026;
+}
+
+/* HEADER */
+header {
+    background: url("header.png") center center / cover no-repeat;
+    width: 100%;
+    height: 250px;
+}
+
+/* NAVIGATION */
+nav {
+    background: #fff0bd;
+    padding: 17px 10px;
+    text-align: center;
+    border-bottom: 1px solid #f0dfad;
+}
+
+nav a {
+    display: inline-block;
+    color: #60451f;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 6px 12px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #c18b20;
+    transform: translateY(-2px);
+}
+
+/* HERO */
+.hero {
+    padding: 42px 20px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 10% 20%, #fff8d9 0 9%, transparent 10%),
+        radial-gradient(circle at 90% 80%, #ffe8a3 0 10%, transparent 11%),
+        linear-gradient(135deg, #fff1bd, #fff9e9);
+}
+
+.tagline {
+    display: inline-block;
+    background: #fffdf4;
+    color: #9c7027;
+    padding: 9px 17px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin: 18px 0 10px;
+}
+
+.hero h2 span {
+    color: #c18b20;
+}
+
+.hero p {
+    max-width: 520px;
+    margin: auto;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #80694a;
+}
+
+/* CHECKOUT */
+.checkout {
+    max-width: 850px;
+    width: calc(100% - 36px);
+    margin: 35px auto 50px;
+    padding: 30px;
+    background: #fffefa;
+    border: 1px solid #f0e1bd;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px #78572b10;
+}
+
+.section-label {
+    color: #bd8b30;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-align: center;
+    display: block;
+}
+
+.checkout h2 {
+    text-align: center;
+    color: #694923;
+    font-size: 28px;
+    margin: 12px 0;
+}
+
+.section-desc {
+    text-align: center;
+    color: #8d775b;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+.form-section {
+    margin-top: 28px;
+    padding-top: 23px;
+    border-top: 1px solid #f0e1bd;
+}
+
+.form-section h3 {
+    color: #79551e;
+    font-size: 18px;
+    margin: 0 0 18px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 15px 0 8px;
+    color: #694923;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #e6d4a5;
+    border-radius: 10px;
+    background: #fffaf0;
+    color: #60451f;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #c99527;
+    box-shadow: 0 0 0 3px #f6d77840;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.field-note {
+    color: #987d5b;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+/* FORM ROW */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* DELIVERY OPTIONS */
+.delivery-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.option-card {
+    border: 1px solid #e8ce81;
+    background: #fffaf0;
+    border-radius: 15px;
+    padding: 16px 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.option-card:hover {
+    background: #fff4cc;
+}
+
+.option-card:has(input:checked) {
+    border: 2px solid #c99527;
+    background: #fff3c9;
+}
+
+.option-card input {
+    width: auto;
+    margin: 0 0 10px;
+    accent-color: #c99527;
+}
+
+.option-icon {
+    display: block;
+    font-size: 29px;
+    margin-bottom: 8px;
+}
+
+.option-title {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: #694923;
+    line-height: 1.5;
+}
+
+.option-desc {
+    display: block;
+    color: #8d775b;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+.delivery-price {
+    display: block;
+    margin-top: 8px;
+    color: #a87918;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* VEHICLE OPTIONS */
+.vehicle-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.vehicle-card {
+    border: 1px solid #e8ce81;
+    background: #fffaf0;
+    border-radius: 14px;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.vehicle-card:has(input:checked) {
+    border: 2px solid #c99527;
+    background: #fff3c9;
+}
+
+.vehicle-card input {
+    width: auto;
+    margin: 0;
+    accent-color: #c99527;
+}
+
+.vehicle-icon {
+    font-size: 30px;
+}
+
+.vehicle-card strong {
+    display: block;
+    font-size: 14px;
+}
+
+.vehicle-card small {
+    display: block;
+    margin-top: 5px;
+    color: #8d775b;
+    font-size: 12px;
+}
+
+/* ORDER SUMMARY */
+.order-box {
+    background: linear-gradient(120deg, #fff4cc, #fffaf0);
+    border: 1px solid #edcf79;
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.order-box h3 {
+    margin: 0 0 15px;
+    color: #694923;
+}
+
+.order-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #efdfb3;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.order-line:last-child {
+    border-bottom: none;
+}
+
+.order-line span:last-child {
+    font-weight: bold;
+    text-align: right;
+}
+
+.empty-cart {
+    color: #987d5b;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* DELIVERY COST */
+.delivery-cost-box {
+    background: #fff8e6;
+    border: 1px solid #edcf79;
+    border-radius: 14px;
+    padding: 16px;
+    margin-top: 15px;
+}
+
+.delivery-cost-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 13px;
+    line-height: 1.7;
+    padding: 5px 0;
+}
+
+.delivery-cost-line strong {
+    color: #a87918;
+    text-align: right;
+    font-size: 13px;
+}
+
+.total-line {
+    border-top: 1px solid #e5c56e;
+    margin-top: 12px;
+    padding-top: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.total-line strong {
+    font-size: 25px;
+    color: #a66f10;
+}
+
+.total-line small {
+    display: block;
+    color: #987d5b;
+    font-size: 11px;
+    line-height: 1.6;
+    margin-top: 5px;
+}
+
+/* BUTTON */
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 30px;
+    background: #c99527;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-button:hover {
+    background: #a87918;
+    transform: translateY(-2px);
+}
+
+/* SUCCESS */
+.success-message {
+    display: none;
+    background: #fff4cc;
+    border: 1px solid #e5c56e;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.success-message h3 {
+    color: #79551e;
+}
+
+/* FOOTER */
+footer {
+    background: #67482b;
+    color: #fff3d4;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+footer h3 {
+    letter-spacing: 3px;
+    margin: 0 0 10px;
+}
+
+footer p {
+    font-size: 12px;
+    line-height: 1.8;
+    margin: 6px 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 650px) {
+    header {
+        height: 170px;
+        background-position: center;
+    }
+
+    nav a {
+        margin: 7px;
+        font-size: 11px;
+    }
+
+    .hero h2 {
+        font-size: 30px;
+    }
+
+    .checkout {
+        padding: 21px;
+        margin-top: 25px;
+    }
+
+    .checkout h2 {
+        font-size: 24px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .delivery-options {
+        grid-template-columns: 1fr;
+    }
+
+    .option-card {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 12px;
+        padding: 13px;
+    }
+
+    .option-card input {
+        margin: 0;
+    }
+
+    .option-icon {
+        margin: 0;
+        font-size: 27px;
+    }
+
+    .option-text {
+        flex: 1;
+    }
+
+    .total-line strong {
+        font-size: 21px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header></header>
+
+<nav>
+    <a href="home.html">🏠 HOME</a>
+    <a href="profile.html">ABOUT US</a>
+    <a href="product.html">🛍️ PRODUCT</a>
+    <a href="checkout.html">🛒 CHECKOUT</a>
+    <a href="contact.html">📩 CONTACT</a>
+    <a href="review.html">⭐ REVIEW</a>
+</nav>
+
+<section class="hero">
+    <span class="tagline">♡ ONE MORE STEP TO DELICIOUSNESS ♡</span>
+    <h2>Complete Your<br><span>Order With Love!</span></h2>
+    <p>
+        Isi data pesananmu, pilih cara menerima salt bread,
+        lalu nikmati kelezatan SALT & CO! 💛
+    </p>
+</section>
+
+<main class="checkout">
+
+    <span class="section-label">YOUR ORDER</span>
+    <h2>Checkout 🛒</h2>
+    <p class="section-desc">
+        Pastikan informasi pesananmu sudah benar sebelum konfirmasi.
+    </p>
+
+    <form id="checkoutForm">
+
+        <!-- CUSTOMER INFORMATION -->
+        <div class="form-section">
+            <h3>👤 Informasi Pelanggan</h3>
+
+            <label for="customerName">Nama Lengkap</label>
+            <input type="text" id="customerName" name="customerName"
+                placeholder="Masukkan nama lengkap"
+                maxlength="100" required>
+
+            <div class="form-row">
+                <div>
+                    <label for="phone">No. WhatsApp</label>
+                    <input type="tel" id="phone" name="phone"
+                        placeholder="Contoh: 081234567890" required>
+                </div>
+
+                <div>
+                    <label for="email">Email (opsional)</label>
+                    <input type="email" id="email" name="email"
+                        placeholder="nama@email.com">
+                </div>
+            </div>
+        </div>
+
+        <!-- ORDER SUMMARY -->
+        <div class="form-section">
+            <h3>🥐 Ringkasan Pesanan</h3>
+
+            <div class="order-box">
+                <div id="orderItems"></div>
+            </div>
+
+            <div class="delivery-cost-box">
+
+                <div class="delivery-cost-line">
+                    <span>Harga produk</span>
+                    <strong id="productSubtotal">Rp0</strong>
+                </div>
+
+                <div class="delivery-cost-line">
+                    <span>Biaya pengiriman</span>
+                    <strong id="deliveryCost">Gratis</strong>
+                </div>
+
+                <div class="delivery-cost-line" id="courierInfo"
+                    style="display:none;">
+                    <span>Keterangan kurir</span>
+                    <strong>Belum termasuk tarif aplikasi</strong>
+                </div>
+
+                <div class="total-line">
+                    <span>
+                        <b>Total pembayaran</b>
+                        <small id="totalNote">
+                            Biaya pengambilan gratis.
+                        </small>
+                    </span>
+                    <strong id="orderTotal">Rp0</strong>
+                </div>
+
+            </div>
+
+            <p class="field-note">
+                Biaya pengiriman kurir pihak ketiga mengikuti tarif
+                aplikasi dan belum termasuk dalam total pembayaran.
+            </p>
+        </div>
+
+        <!-- DELIVERY -->
+        <div class="form-section">
+            <h3>🚚 Pilih Cara Menerima Pesanan</h3>
+
+            <div class="delivery-options">
+
+                <label class="option-card">
+                    <input type="radio" name="deliveryMethod"
+                        value="pickup" checked onchange="updateDelivery()">
+
+                    <span class="option-icon">🏪</span>
+
+                    <span class="option-text">
+                        <span class="option-title">Ambil ke Toko</span>
+                        <span class="option-desc">
+                            Pelanggan datang langsung ke toko.
+                        </span>
+                        <span class="delivery-price">GRATIS</span>
+                    </span>
+                </label>
+
+                <label class="option-card">
+                    <input type="radio" name="deliveryMethod"
+                        value="store" onchange="updateDelivery()">
+
+                    <span class="option-icon">🛵</span>
+
+                    <span class="option-text">
+                        <span class="option-title">Diantar SALT & CO</span>
+                        <span class="option-desc">
+                            Pesanan diantar oleh pihak toko.
+                        </span>
+                        <span class="delivery-price">Rp20.000</span>
+                    </span>
+                </label>
+
+                <label class="option-card">
+                    <input type="radio" name="deliveryMethod"
+                        value="courier" onchange="updateDelivery()">
+
+                    <span class="option-icon">📦</span>
+
+                    <span class="option-text">
+                        <span class="option-title">Kurir Pihak Ketiga</span>
+                        <span class="option-desc">
+                            Contoh: layanan seperti GoSend atau GrabExpress.
+                        </span>
+                        <span class="delivery-price">
+                            Sesuai tarif aplikasi
+                        </span>
+                    </span>
+                </label>
+
+            </div>
+
+            <!-- ADDRESS -->
+            <div id="addressSection" style="display:none;">
+
+                <label for="address">Alamat Pengiriman</label>
+                <textarea id="address" name="address" rows="4"
+                    placeholder="Nama jalan, nomor rumah, kecamatan, kota, dan patokan lokasi"></textarea>
+
+                <label for="notes">Catatan untuk Pengantar (opsional)</label>
+                <textarea id="notes" name="notes" rows="2"
+                    placeholder="Contoh: rumah pagar putih, belok di gang sebelah minimarket"></textarea>
+
+            </div>
+
+            <!-- COURIER -->
+            <div id="courierSection" style="display:none;">
+
+                <label for="courier">Pilihan layanan kurir</label>
+
+                <select id="courier" name="courier">
+                    <option value="GoSend">GoSend (Gojek)</option>
+                    <option value="GrabExpress">GrabExpress (Grab)</option>
+                    <option value="Other">Kurir lainnya</option>
+                </select>
+
+                <p class="field-note">
+                    Tarif mengikuti aplikasi kurir yang dipilih.
+                    Biaya belum dihitung ke dalam total pembayaran.
+                    Pemesanan kurir perlu dikonfirmasi secara terpisah.
+                </p>
+
+            </div>
+
+            <!-- VEHICLE -->
+            <div id="vehicleSection" style="display:none;">
+
+                <label>Pilih Jenis Kendaraan</label>
+
+                <div class="vehicle-options">
+
+                    <label class="vehicle-card">
+                        <input type="radio" name="vehicle"
+                            value="Motor" checked>
+
+                        <span class="vehicle-icon">🛵</span>
+
+                        <span>
+                            <strong>Motor</strong>
+                            <small>Cocok untuk pesanan kecil.</small>
+                        </span>
+                    </label>
+
+                    <label class="vehicle-card">
+                        <input type="radio" name="vehicle"
+                            value="Mobil">
+
+                        <span class="vehicle-icon">🚗</span>
+
+                        <span>
+                            <strong>Mobil</strong>
+                            <small>Untuk pesanan lebih besar.</small>
+                        </span>
+                    </label>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- PAYMENT -->
+        <div class="form-section">
+            <h3>💳 Metode Pembayaran</h3>
+
+            <label for="payment">Pilih Metode Pembayaran</label>
+
+            <select id="payment" name="payment" required>
+                <option value="COD">
+                    COD / Bayar saat menerima pesanan
+                </option>
+                <option value="Transfer Bank">Transfer Bank</option>
+                <option value="E-Wallet">E-Wallet</option>
+            </select>
+
+            <label for="orderNotes">Catatan Pesanan (opsional)</label>
+
+            <textarea id="orderNotes" name="orderNotes" rows="3"
+                placeholder="Tulis permintaan khusus untuk pesananmu..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">
+            💛 KONFIRMASI PESANAN
+        </button>
+
+    </form>
+
+    <div class="success-message" id="successMessage"></div>
+
+</main>
+
+<footer>
+    <h3>SALT & CO 🥐</h3>
+    <p>Freshly Baked · Soft · Delicious</p>
+    <p>Copyright © 2026 SALT & CO Marketplace</p>
+    <p>Made with ♡ and freshly baked every day.</p>
+</footer>
+
+<script>
+const productPrices = {
+    "Strawberry": 21000,
+    "Chocolate": 21000,
+    "Ham & Cheese": 23000,
+    "Original": 18000,
+    "Dancow": 21000,
+    "Bolognese": 21000
+};
+
+const STORE_DELIVERY_FEE = 20000;
+
+function rupiah(number) {
+    return "Rp" + number.toLocaleString("id-ID");
+}
+
+/* GET ORDER FROM LOCAL STORAGE */
+function getOrder() {
+    try {
+        const saved = JSON.parse(
+            localStorage.getItem("saltcoOrder")
+        ) || [];
+
+        return saved.filter(item =>
+            productPrices[item.name] &&
+            Number(item.qty) > 0
+        );
+
+    } catch (error) {
+        return [];
+    }
+}
+
+/* HTML SECURITY */
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
+}
+
+/* PRODUCT SUBTOTAL */
+function getProductSubtotal() {
+    const order = getOrder();
+
+    return order.reduce(function(sum, item) {
+        return sum +
+            productPrices[item.name] * Number(item.qty);
+    }, 0);
+}
+
+/* DELIVERY COST */
+function getDeliveryCost() {
+    const method = document.querySelector(
+        'input[name="deliveryMethod"]:checked'
+    ).value;
+
+    if (method === "store") {
+        return STORE_DELIVERY_FEE;
+    }
+
+    return 0;
+}
+
+/* RENDER ORDER */
+function renderOrder() {
+    const order = getOrder();
+    const container = document.getElementById("orderItems");
+
+    if (order.length === 0) {
+        container.innerHTML = `
+            <p class="empty-cart">
+                Keranjangmu masih kosong. Silakan pilih salt bread
+                di halaman Product terlebih dahulu.
+                <br><br>
+                <a href="product.html"
+                   style="color:#a87918;font-weight:bold;">
+                    ← Kembali ke Product
+                </a>
+            </p>
+        `;
+
+        document.getElementById("productSubtotal").textContent = "Rp0";
+        updateDelivery();
+        return;
+    }
+
+    container.innerHTML = order.map(function(item) {
+        const price = productPrices[item.name];
+        const qty = Number(item.qty);
+        const subtotal = price * qty;
+
+        return `
+            <div class="order-line">
+                <span>${escapeHTML(item.name)} × ${qty}</span>
+                <span>${rupiah(subtotal)}</span>
+            </div>
+        `;
+    }).join("");
+
+    document.getElementById("productSubtotal").textContent =
+        rupiah(getProductSubtotal());
+
+    updateDelivery();
+}
+
+/* UPDATE DELIVERY DISPLAY */
+function updateDelivery() {
+    const method = document.querySelector(
+        'input[name="deliveryMethod"]:checked'
+    ).value;
+
+    const addressSection =
+        document.getElementById("addressSection");
+
+    const courierSection =
+        document.getElementById("courierSection");
+
+    const vehicleSection =
+        document.getElementById("vehicleSection");
+
+    const address = document.getElementById("address");
+
+    const isPickup = method === "pickup";
+    const isStore = method === "store";
+    const isCourier = method === "courier";
+
+    addressSection.style.display =
+        isPickup ? "none" : "block";
+
+    courierSection.style.display =
+        isCourier ? "block" : "none";
+
+    vehicleSection.style.display =
+        isPickup ? "none" : "block";
+
+    address.required = !isPickup;
+
+    const productSubtotal = getProductSubtotal();
+    const deliveryCost = getDeliveryCost();
+
+    const deliveryCostElement =
+        document.getElementById("deliveryCost");
+
+    const courierInfo =
+        document.getElementById("courierInfo");
+
+    const orderTotal =
+        document.getElementById("orderTotal");
+
+    const totalNote =
+        document.getElementById("totalNote");
+
+    if (isPickup) {
+        deliveryCostElement.textContent = "Gratis";
+        courierInfo.style.display = "none";
+        totalNote.textContent = "Biaya pengambilan gratis.";
+
+    } else if (isStore) {
+        deliveryCostElement.textContent =
+            rupiah(STORE_DELIVERY_FEE);
+
+        courierInfo.style.display = "none";
+
+        totalNote.textContent =
+            "Termasuk ongkir SALT & CO Rp20.000.";
+
+    } else {
+        deliveryCostElement.textContent =
+            "Sesuai aplikasi";
+
+        courierInfo.style.display = "flex";
+
+        totalNote.textContent =
+            "Belum termasuk ongkir kurir pihak ketiga.";
+    }
+
+    orderTotal.textContent =
+        rupiah(productSubtotal + deliveryCost);
+}
+
+/* FORM SUBMISSION */
+document.getElementById("checkoutForm").addEventListener(
+    "submit",
+    function(event) {
+        event.preventDefault();
+
+        const order = getOrder();
+
+        if (order.length === 0) {
+            alert(
+                "Keranjangmu masih kosong. Pilih produk terlebih dahulu ya! 🥐"
+            );
+            return;
+        }
+
+        const name = document.getElementById(
+            "customerName"
+        ).value.trim();
+
+        const phone = document.getElementById(
+            "phone"
+        ).value.trim();
+
+        const email = document.getElementById(
+            "email"
+        ).value.trim();
+
+        const method = document.querySelector(
+            'input[name="deliveryMethod"]:checked'
+        ).value;
+
+        const payment = document.getElementById(
+            "payment"
+        ).value;
+
+        const address = document.getElementById(
+            "address"
+        ).value.trim();
+
+        const notes = document.getElementById(
+            "notes"
+        ).value.trim();
+
+        const orderNotes = document.getElementById(
+            "orderNotes"
+        ).value.trim();
+
+        if (!name || !phone) {
+            alert(
+                "Lengkapi nama dan nomor WhatsApp terlebih dahulu."
+            );
+            return;
+        }
+
+        if (method !== "pickup" && !address) {
+            alert(
+                "Masukkan alamat pengiriman terlebih dahulu."
+            );
+            return;
+        }
+
+        const productSubtotal = getProductSubtotal();
+
+        const deliveryCost = method === "store"
+            ? STORE_DELIVERY_FEE
+            : 0;
+
+        const total = productSubtotal + deliveryCost;
+
+        let deliveryText = "Ambil sendiri di toko";
+        let courierName = "-";
+        let vehicle = "-";
+
+        if (method === "store") {
+            deliveryText = "Diantar oleh SALT & CO";
+
+            vehicle = document.querySelector(
+                'input[name="vehicle"]:checked'
+            ).value;
+
+        } else if (method === "courier") {
+            deliveryText = "Kurir pihak ketiga";
+
+            courierName = document.getElementById(
+                "courier"
+            ).value;
+
+            vehicle = document.querySelector(
+                'input[name="vehicle"]:checked'
+            ).value;
+        }
+
+        const orderData = {
+            customerName: name,
+            phone: phone,
+            email: email,
+            items: order,
+            productSubtotal: productSubtotal,
+            deliveryCost: deliveryCost,
+            total: total,
+            deliveryMethod: deliveryText,
+            courier: courierName,
+            vehicle: vehicle,
+            address: method === "pickup" ? "-" : address,
+            deliveryNotes: notes,
+            payment: payment,
+            orderNotes: orderNotes,
+            date: new Date().toLocaleString("id-ID")
+        };
+
+        localStorage.setItem(
+            "saltcoLastCheckout",
+            JSON.stringify(orderData)
+        );
+
+        const itemSummary = order.map(function(item) {
+            return `
+                ${escapeHTML(item.name)} × ${item.qty}
+                (${rupiah(
+                    productPrices[item.name] * Number(item.qty)
+                )})
+            `;
+        }).join("<br>");
+
+        let deliveryCostText = "Gratis";
+
+        if (method === "store") {
+            deliveryCostText = rupiah(STORE_DELIVERY_FEE);
+        } else if (method === "courier") {
+            deliveryCostText =
+                "Sesuai tarif aplikasi (belum dihitung)";
+        }
+
+        const success = document.getElementById(
+            "successMessage"
+        );
+
+        success.innerHTML = `
+            <h3>💛 Pesanan berhasil dicatat!</h3>
+
+            <p>
+                <b>Nama:</b> ${escapeHTML(name)}
+            </p>
+
+            <p>
+                <b>No. WhatsApp:</b> ${escapeHTML(phone)}
+            </p>
+
+            <p>
+                <b>Pesanan:</b><br>
+                ${itemSummary}
+            </p>
+
+            <p>
+                <b>Harga produk:</b>
+                ${rupiah(productSubtotal)}
+            </p>
+
+            <p>
+                <b>Biaya pengiriman:</b>
+                ${deliveryCostText}
+            </p>
+
+            <p>
+                <b>Total pembayaran:</b>
+                <strong>${rupiah(total)}</strong>
+            </p>
+
+            <p>
+                <b>Cara menerima:</b>
+                ${escapeHTML(deliveryText)}
+            </p>
+
+            ${method !== "pickup" ? `
+                <p>
+                    <b>Alamat:</b>
+                    ${escapeHTML(address)}
+                </p>
+            ` : ""}
+
+            ${method !== "pickup" ? `
+                <p>
+                    <b>Kendaraan:</b>
+                    ${escapeHTML(vehicle)}
+                </p>
+            ` : ""}
+
+            ${method === "courier" ? `
+                <p>
+                    <b>Layanan kurir pilihan:</b>
+                    ${escapeHTML(courierName)}
+                </p>
+            ` : ""}
+
+            <p>
+                <b>Pembayaran:</b>
+                ${escapeHTML(payment)}
+            </p>
+
+            <p class="field-note">
+                Ini adalah konfirmasi dari halaman demo website.
+                Pesanan belum otomatis terkirim ke pihak toko atau kurir.
+                Untuk kurir pihak ketiga, biaya pengiriman akan mengikuti
+                tarif aplikasi dan belum termasuk total di atas.
+                Silakan hubungi toko untuk memastikan pesanan diproses.
+            </p>
+        `;
+
+        success.style.display = "block";
+
+        success.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+);
+
+/* INITIAL DISPLAY */
+renderOrder();
+updateDelivery();
+</script>
+
+</body>
+</html>

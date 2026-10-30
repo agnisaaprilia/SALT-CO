@@ -1,0 +1,955 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SALT & CO - Product</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fffaf0;
+    color: #5c4026;
+}
+
+/* HEADER */
+header {
+    background: url("header.png") center center / cover no-repeat;
+    width: 100%;
+    height: 250px;
+}
+
+/* NAVIGATION */
+nav {
+    background: #fff0bd;
+    padding: 17px 10px;
+    text-align: center;
+    border-bottom: 1px solid #f0dfad;
+}
+
+nav a {
+    display: inline-block;
+    color: #60451f;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 6px 12px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #c18b20;
+    transform: translateY(-2px);
+}
+
+/* HERO */
+.hero {
+    padding: 48px 20px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 10% 20%, #fff8d9 0 9%, transparent 10%),
+        radial-gradient(circle at 90% 80%, #ffe8a3 0 10%, transparent 11%),
+        linear-gradient(135deg, #fff1bd, #fff9e9);
+}
+
+.tagline {
+    display: inline-block;
+    background: #fffdf4;
+    color: #9c7027;
+    padding: 9px 17px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.hero h2 {
+    font-size: 39px;
+    line-height: 1.2;
+    margin: 20px 0 12px;
+}
+
+.hero h2 span {
+    color: #c18b20;
+}
+
+.hero p {
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 520px;
+    margin: auto;
+}
+
+/* JUDUL MENU */
+.menu-section {
+    padding: 45px 18px 10px;
+    text-align: center;
+}
+
+.section-label {
+    color: #bd8b30;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.menu-section h2 {
+    font-size: 30px;
+    margin: 12px 0;
+}
+
+.section-desc {
+    color: #8d775b;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* GRID PRODUK */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1050px;
+    margin: 30px auto 45px;
+    padding: 0 20px;
+}
+
+/* KARTU PRODUK */
+.card {
+    background: #fffefa;
+    border: 1px solid #f0e1bd;
+    border-radius: 22px;
+    padding: 17px;
+    text-align: center;
+    box-shadow: 0 5px 18px #78572b0b;
+    transition: 0.3s;
+    min-width: 0;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px #9d78351b;
+    border-color: #e5c56e;
+}
+
+.product-image,
+.product-placeholder {
+    width: 100%;
+    height: 185px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.product-image {
+    object-fit: cover;
+    display: block;
+    background: #fff0bd;
+}
+
+.product-placeholder {
+    background: linear-gradient(135deg, #fff2c8, #ffe49a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.product-placeholder span {
+    font-size: 65px;
+}
+
+.product-placeholder p {
+    font-size: 12px;
+    color: #9c7027;
+    margin: 8px 0 0;
+}
+
+.card h3,
+.bundle-card h3 {
+    font-size: 18px;
+    margin: 8px 0;
+    color: #694923;
+}
+
+.price {
+    color: #b37b17;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+/* DETAIL BUTTON */
+.detail-button {
+    width: 100%;
+    background: #fff8e3;
+    color: #79551e;
+    border: 1px solid #e8ce81;
+    border-radius: 20px;
+    padding: 11px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px 0 14px;
+    transition: 0.3s;
+}
+
+.detail-button:hover {
+    background: #ffe9a6;
+}
+
+/* QUANTITY */
+.quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 15px 0;
+}
+
+.quantity button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #f6d778;
+    color: #60451f;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.quantity button:hover {
+    background: #e9c04a;
+}
+
+.quantity span {
+    min-width: 22px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+/* SPECIAL BUNDLING PROMO */
+.bundle-section {
+    padding: 48px 18px 15px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 5% 15%, #fff0bd 0 8%, transparent 9%),
+        radial-gradient(circle at 95% 85%, #ffe8a3 0 9%, transparent 10%),
+        linear-gradient(135deg, #fff5d8, #fffaf0);
+    margin-top: 35px;
+    border-top: 1px solid #f0dfad;
+    border-bottom: 1px solid #f0dfad;
+}
+
+.bundle-section h2 {
+    font-size: 30px;
+    margin: 13px 0;
+    color: #694923;
+}
+
+.bundle-section p {
+    color: #8d775b;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* GRID BUNDLE */
+.bundle-products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1050px;
+    margin: 30px auto 50px;
+    padding: 0 20px;
+}
+
+/* KARTU BUNDLE */
+.bundle-card {
+    background: #fffefa;
+    border: 2px solid #e8ce81;
+    border-radius: 22px;
+    padding: 17px;
+    text-align: center;
+    box-shadow: 0 5px 18px #78572b0b;
+    transition: 0.3s;
+    min-width: 0;
+}
+
+.bundle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px #9d78351b;
+    border-color: #d9b84f;
+}
+
+.bundle-label {
+    display: inline-block;
+    background: #f6d778;
+    color: #694923;
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+/* DETAIL PRODUK */
+#productDetail {
+    display: none;
+    max-width: 950px;
+    margin: 0 auto 45px;
+    padding: 30px;
+    background: #fffefa;
+    border: 2px solid #e6c65c;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px #78572b12;
+    scroll-margin-top: 20px;
+}
+
+#productDetail h2 {
+    color: #694923;
+    margin-top: 15px;
+}
+
+.detail-description {
+    background: linear-gradient(120deg, #fff4cc, #fffaf0);
+    padding: 20px;
+    border-radius: 15px;
+    line-height: 1.9;
+    color: #77633e;
+    margin: 18px 0;
+}
+
+.detail-description p {
+    margin: 10px 0;
+}
+
+.close-detail {
+    float: right;
+    border: none;
+    background: #fff0bd;
+    color: #79551e;
+    border-radius: 20px;
+    padding: 9px 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* KERANJANG */
+.order-summary {
+    max-width: 1010px;
+    margin: 0 auto 50px;
+    padding: 28px;
+    border: 1px solid #edcf79;
+    border-radius: 24px;
+    background: linear-gradient(120deg, #ffe8a0, #fff5d4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.order-summary h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+}
+
+.order-summary p {
+    margin: 7px 0;
+    font-size: 14px;
+}
+
+.total-price {
+    font-size: 27px;
+    color: #a66f10;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* CHECKOUT */
+.checkout-button {
+    display: inline-block;
+    background: #c99527;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.checkout-button:hover {
+    background: #a87918;
+    transform: translateY(-3px);
+}
+
+/* FOOTER */
+footer {
+    background: #67482b;
+    color: #fff3d4;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+footer h3 {
+    letter-spacing: 3px;
+    margin: 0 0 10px;
+}
+
+footer p {
+    font-size: 12px;
+    line-height: 1.8;
+    margin: 6px 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 750px) {
+
+    header {
+        height: 170px;
+        background-position: center;
+    }
+
+    nav a {
+        margin: 7px;
+        font-size: 11px;
+    }
+
+    .hero h2 {
+        font-size: 32px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+        padding: 0 12px;
+    }
+
+    .bundle-products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+        padding: 0 12px;
+    }
+
+    .card,
+    .bundle-card {
+        padding: 11px;
+        border-radius: 17px;
+    }
+
+    .product-image,
+    .product-placeholder {
+        height: 135px;
+    }
+
+    .product-placeholder span {
+        font-size: 48px;
+    }
+
+    .card h3,
+    .bundle-card h3 {
+        font-size: 14px;
+    }
+
+    .price {
+        font-size: 17px;
+    }
+
+    .quantity {
+        gap: 12px;
+    }
+
+    .quantity button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .menu-section h2,
+    .bundle-section h2 {
+        font-size: 25px;
+    }
+
+    #productDetail {
+        margin: 0 12px 35px;
+        padding: 20px;
+    }
+
+    .order-summary {
+        margin: 0 12px 35px;
+        padding: 22px;
+    }
+
+    .checkout-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .products,
+    .bundle-products {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header></header>
+
+<!-- NAVIGATION -->
+<nav>
+    <a href="home.html">🏠 HOME</a>
+    <a href="profile.html">ABOUT US</a>
+    <a href="product.html">🛍️ PRODUCT</a>
+    <a href="checkout.html">🛒 CHECKOUT</a>
+    <a href="contact.html">📩 CONTACT</a>
+    <a href="review.html">⭐ REVIEW</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <span class="tagline">♡ MADE FRESH WITH LOVE ♡</span>
+
+    <h2>
+        Find Your<br>
+        <span>Happiness in Every Bite!</span>
+    </h2>
+
+    <p>
+        Temukan salt bread favoritmu, kenali setiap rasanya,
+        dan nikmati pengalaman berbelanja bersama SALT & CO! 🥐💛
+    </p>
+</section>
+
+<!-- JUDUL PRODUK SATUAN -->
+<section class="menu-section">
+    <span class="section-label">OUR SPECIAL MENU</span>
+    <h2>Pick Your Favorite! ♡</h2>
+
+    <p class="section-desc">
+        Temukan rasa yang cocok untukmu! ✨<br>
+        Pilih produk favoritmu dan masukkan ke keranjang.
+    </p>
+</section>
+
+<!-- DAFTAR 6 PRODUK SATUAN -->
+<div class="products" id="products"></div>
+
+<!-- BAGIAN PROMO BUNDLING -->
+<section class="bundle-section">
+
+    <span class="section-label">SPECIAL DEAL ♡</span>
+
+    <h2>Special Bundling Promo! 🎀</h2>
+
+    <p>
+        More bread, more happiness! ✨<br>
+        Nikmati pilihan bundle spesial dari SALT & CO
+        dengan berbagai rasa favoritmu.
+    </p>
+
+</section>
+
+<!-- DAFTAR 3 BUNDLE -->
+<div class="bundle-products" id="bundleProducts"></div>
+
+<!-- DETAIL PRODUK -->
+<section id="productDetail">
+
+    <button class="close-detail" onclick="closeDetail()">
+        ✕ Tutup
+    </button>
+
+    <div id="detailContent"></div>
+
+</section>
+
+<!-- KERANJANG -->
+<section class="order-summary">
+
+    <div>
+        <h2>🛒 Your Little Basket</h2>
+
+        <p id="itemCount">0 item dipilih</p>
+
+        <p>Total pesananmu:</p>
+
+        <div class="total-price" id="total">Rp0</div>
+    </div>
+
+    <a href="checkout.html"
+       class="checkout-button"
+       onclick="return goCheckout()">
+        CHECKOUT SEKARANG →
+    </a>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <h3>SALT & CO 🥐</h3>
+    <p>Freshly Baked · Soft · Delicious</p>
+    <p>Copyright © 2026 SALT & CO Marketplace</p>
+    <p>Made with ♡ and freshly baked every day.</p>
+</footer>
+
+<script>
+
+/* DATA PRODUK */
+const products = [
+
+    /* PRODUK SATUAN */
+
+    {
+        name: "Strawberry",
+        emoji: "🍓",
+        price: 21000,
+        image: "strawberry.png",
+        description: "Perpaduan salt bread yang lembut dengan cita rasa stroberi yang manis dan sedikit asam. Cocok untuk kamu yang menyukai sensasi fruity dan segar dalam setiap gigitan. Pilihan manis untuk menemani waktu santai!",
+        taste: "Manis, fruity, sedikit asam",
+        suitable: "Pencinta rasa buah dan roti manis"
+    },
+
+    {
+        name: "Chocolate",
+        emoji: "🍫",
+        price: 21000,
+        image: "chocolate.png",
+        description: "Salt bread dengan perpaduan rasa cokelat yang kaya dan lembut. Rasanya cocok untuk pencinta cokelat yang ingin menikmati camilan manis dengan sensasi gurih khas salt bread.",
+        taste: "Manis, cokelat, gurih",
+        suitable: "Pencinta cokelat dan camilan manis"
+    },
+
+    {
+        name: "Ham & Cheese",
+        emoji: "🧀",
+        price: 23000,
+        image: "hamncheese.png",
+        description: "Pilihan gurih dengan perpaduan ham dan keju yang menghadirkan rasa savory di setiap gigitan. Cocok untuk kamu yang ingin menikmati salt bread sebagai camilan mengenyangkan atau teman makan.",
+        taste: "Gurih, cheesy, savory",
+        suitable: "Pencinta rasa gurih dan keju"
+    },
+
+    {
+        name: "Original",
+        emoji: "🥐",
+        price: 18000,
+        image: "original.png",
+        description: "Varian klasik untuk menikmati kelezatan salt bread tanpa tambahan rasa yang berlebihan. Tekstur roti yang lembut berpadu dengan aroma butter dan sentuhan asin yang khas.",
+        taste: "Gurih, buttery, sedikit asin",
+        suitable: "Pencinta rasa klasik dan sederhana"
+    },
+
+    {
+        name: "Dancow",
+        emoji: "🥛",
+        price: 21000,
+        image: "dancow.png",
+        description: "Salt bread dengan taburan susu bubuk Dancow yang memberikan cita rasa susu putih yang manis, creamy, dan lembut. Cocok untuk pencinta susu yang ingin menikmati camilan manis dengan aroma susu yang khas.",
+        taste: "Susu putih, manis, creamy",
+        suitable: "Pencinta susu bubuk dan rasa milky"
+    },
+
+    {
+        name: "Bolognese",
+        emoji: "🍅",
+        price: 21000,
+        image: "bolognese.png",
+        description: "Salt bread dengan cita rasa saus bolognese yang gurih, perpaduan rasa tomat dan bumbu yang lezat. Cocok untuk kamu yang menyukai camilan asin dengan sensasi savory yang kaya rasa.",
+        taste: "Gurih, tomat, savory",
+        suitable: "Pencinta rasa bolognese dan camilan gurih"
+    },
+
+    /* BUNDLE ASIN */
+
+    {
+        name: "Savory Bundle",
+        emoji: "🧀",
+        price: 62000,
+        image: "bundle asin.png",
+        description: "Paket spesial untuk pencinta rasa gurih! Nikmati tiga varian salt bread dengan cita rasa berbeda dalam satu bundle.",
+        taste: "Gurih, savory, cheesy",
+        suitable: "Pencinta salt bread rasa asin",
+        contents: "1 Original + 1 Ham & Cheese + 1 Bolognese"
+    },
+
+    /* BUNDLE MANIS */
+
+    {
+        name: "Sweettooth Bundle",
+        emoji: "🍓",
+        price: 63000,
+        image: "bundle manis.png",
+        description: "Bundle spesial untuk kamu yang suka camilan manis! Perpaduan rasa stroberi, cokelat, dan susu Dancow yang lembut dan nikmat.",
+        taste: "Manis, fruity, chocolate, creamy",
+        suitable: "Pencinta salt bread manis",
+        contents: "1 Strawberry + 1 Chocolate + 1 Dancow"
+    },
+
+    /* BUNDLE SEMUA VARIAN */
+
+    {
+        name: "All in One Bundle",
+        emoji: "🥐",
+        price: 125000,
+        image: "bundle semua.png",
+        description: "Paket lengkap yang berisi seluruh varian SALT & CO. Cocok untuk kamu yang ingin mencoba semua rasa favorit dalam satu paket!",
+        taste: "Manis, gurih, savory, creamy",
+        suitable: "Pencinta semua varian salt bread",
+        contents: "1 Strawberry + 1 Chocolate + 1 Ham & Cheese + 1 Original + 1 Dancow + 1 Bolognese"
+    }
+
+];
+
+/* JUMLAH PRODUK */
+let quantities = products.map(() => 0);
+
+/* FORMAT RUPIAH */
+function rupiah(value) {
+    return "Rp" + value.toLocaleString("id-ID");
+}
+
+/* TEMPLATE KARTU PRODUK */
+function productCard(product, index, isBundle = false) {
+
+    return `
+        <article class="${isBundle ? 'bundle-card' : 'card'}">
+
+            ${isBundle ? `
+                <span class="bundle-label">SPECIAL BUNDLE ♡</span>
+            ` : ""}
+
+            <img class="product-image"
+                src="${product.image}"
+                alt="${product.name} Salt Bread"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+
+            <div class="product-placeholder" style="display:none">
+                <span>${product.emoji}</span>
+                <p>Freshly baked ♡</p>
+            </div>
+
+            <h3>${product.emoji} ${product.name}</h3>
+
+            <p class="price">${rupiah(product.price)}</p>
+
+            <button class="detail-button"
+                onclick="openDetail(${index})">
+
+                ${isBundle ? '♡ LIHAT ISI BUNDLE' : '♡ MENGENAI PRODUK INI'}
+
+            </button>
+
+            <div class="quantity">
+
+                <button onclick="changeQty(${index}, -1)"
+                    aria-label="Kurangi ${product.name}">
+                    −
+                </button>
+
+                <span id="qty${index}">${quantities[index]}</span>
+
+                <button onclick="changeQty(${index}, 1)"
+                    aria-label="Tambah ${product.name}">
+                    +
+                </button>
+
+            </div>
+
+        </article>
+    `;
+}
+
+/* MENAMPILKAN PRODUK DAN BUNDLE */
+function renderProducts() {
+
+    const container = document.getElementById("products");
+    const bundleContainer = document.getElementById("bundleProducts");
+
+    // 6 PRODUK SATUAN
+    container.innerHTML = products
+        .slice(0, 6)
+        .map((product, index) => {
+            return productCard(product, index, false);
+        })
+        .join("");
+
+    // 3 BUNDLE
+    bundleContainer.innerHTML = products
+        .slice(6)
+        .map((product, i) => {
+            return productCard(product, i + 6, true);
+        })
+        .join("");
+}
+
+/* DETAIL PRODUK */
+function openDetail(index) {
+
+    const product = products[index];
+
+    const panel = document.getElementById("productDetail");
+    const content = document.getElementById("detailContent");
+
+    content.innerHTML = `
+
+        <span class="section-label">GET TO KNOW YOUR BREAD</span>
+
+        <h2>${product.emoji} Mengenai ${product.name}</h2>
+
+        <div class="detail-description">
+
+            <p><b>Tentang produk</b></p>
+
+            <p>${product.description}</p>
+
+            ${product.contents ? `
+                <p><b>Isi bundle:</b></p>
+                <p>${product.contents}</p>
+            ` : ""}
+
+            <p><b>Profil rasa:</b> ${product.taste}</p>
+
+            <p><b>Cocok untuk:</b> ${product.suitable}</p>
+
+            <p><b>Harga:</b> ${rupiah(product.price)}</p>
+
+        </div>
+    `;
+
+    panel.style.display = "block";
+
+    panel.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+/* TUTUP DETAIL */
+function closeDetail() {
+    document.getElementById("productDetail").style.display = "none";
+}
+
+/* TAMBAH DAN KURANG PRODUK */
+function changeQty(index, amount) {
+
+    quantities[index] = Math.max(
+        0,
+        quantities[index] + amount
+    );
+
+    updateCart();
+}
+
+/* UPDATE KERANJANG */
+function updateCart() {
+
+    let total = 0;
+    let count = 0;
+
+    products.forEach((product, index) => {
+
+        const qtyElement = document.getElementById("qty" + index);
+
+        if (qtyElement) {
+            qtyElement.textContent = quantities[index];
+        }
+
+        total += product.price * quantities[index];
+
+        count += quantities[index];
+
+    });
+
+    document.getElementById("total").textContent = rupiah(total);
+
+    document.getElementById("itemCount").textContent =
+        count + " item dipilih";
+
+    const order = products.map((product, index) => ({
+
+        name: product.name,
+        price: product.price,
+        qty: quantities[index]
+
+    })).filter(product => product.qty > 0);
+
+    localStorage.setItem(
+        "saltcoOrder",
+        JSON.stringify(order)
+    );
+}
+
+/* CHECKOUT */
+function goCheckout() {
+
+    const count = quantities.reduce(
+        (sum, qty) => sum + qty,
+        0
+    );
+
+    if (count === 0) {
+
+        alert("Pilih salt bread favoritmu dulu ya! 🥐💛");
+
+        return false;
+    }
+
+    updateCart();
+
+    return true;
+}
+
+/* MEMUAT KERANJANG TERSIMPAN */
+function loadCart() {
+
+    try {
+
+        const saved = JSON.parse(
+            localStorage.getItem("saltcoOrder")
+        ) || [];
+
+        products.forEach((product, index) => {
+
+            const found = saved.find(
+                item => item.name === product.name
+            );
+
+            if (found) {
+
+                quantities[index] = Math.max(
+                    0,
+                    Number(found.qty) || 0
+                );
+
+            }
+
+        });
+
+    } catch (error) {
+
+        quantities = products.map(() => 0);
+
+    }
+}
+
+/* JALANKAN HALAMAN */
+loadCart();
+renderProducts();
+updateCart();
+
+</script>
+
+</body>
+</html>

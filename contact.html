@@ -1,0 +1,717 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALT & CO - Contact</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fffaf0;
+            color: #60451f;
+        }
+
+        /* HEADER GAMBAR */
+        header {
+            background: url("header.png") center center / cover no-repeat;
+            width: 100%;
+            height: 250px;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: #fff0bd;
+            padding: 17px 10px;
+            text-align: center;
+            border-bottom: 1px solid #efdfaa;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #60451f;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 7px 11px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #bc851b;
+        }
+
+        nav a.active {
+            border-bottom: 2px solid #bc851b;
+            padding-bottom: 5px;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 70px 20px;
+            background:
+                radial-gradient(circle at 8% 25%,
+                    #ffffff 0 4%, transparent 4.5%),
+                radial-gradient(circle at 90% 70%,
+                    #ffe6a0 0 8%, transparent 8.5%),
+                linear-gradient(135deg, #fff1bd, #fffaf0);
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 9px 18px;
+            background: #fffdf5;
+            color: #a47722;
+            border: 1px solid #f0dfa6;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .hero h2 {
+            margin: 22px 0 15px;
+            font-size: 46px;
+            line-height: 1.2;
+            color: #674719;
+        }
+
+        .hero h2 span {
+            color: #c18b20;
+        }
+
+        .hero p {
+            max-width: 580px;
+            margin: auto;
+            color: #806c4c;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .decoration {
+            margin-top: 22px;
+            font-size: 28px;
+            letter-spacing: 7px;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            width: 90%;
+            max-width: 1080px;
+            margin: 60px auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .section-heading span {
+            color: #bc8b30;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        .section-heading h2 {
+            margin: 12px 0;
+            font-size: 30px;
+            color: #674719;
+        }
+
+        .section-heading p {
+            color: #927c5d;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* CONTACT CARDS */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            background: #fffefa;
+            border: 1px solid #f0e1bd;
+            border-radius: 23px;
+            padding: 30px;
+            min-height: 245px;
+            box-shadow: 0 7px 22px #79582a0b;
+            transition: 0.3s;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            right: -32px;
+            bottom: -32px;
+            border-radius: 50%;
+            background: #fff2c7;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #e6c76f;
+            box-shadow: 0 12px 28px #79582a18;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 58px;
+            height: 58px;
+            background: #fff1bf;
+            border-radius: 18px;
+            font-size: 28px;
+            margin-bottom: 19px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            color: #674719;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #806c4c;
+            overflow-wrap: anywhere;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 21px;
+            border: none;
+            border-radius: 25px;
+            background: #c99527;
+            color: white;
+            text-decoration: none;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #a87918;
+            transform: translateY(-2px);
+        }
+
+        /* OPENING HOURS */
+        .hours-section {
+            margin-top: 45px;
+            padding: 32px;
+            background: linear-gradient(135deg, #fff0bd, #fff8df);
+            border: 1px solid #f0d98f;
+            border-radius: 26px;
+        }
+
+        .hours-intro {
+            text-align: center;
+        }
+
+        .hours-intro .mini-label {
+            color: #bc8b30;
+            font-size: 11px;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .hours-intro h2 {
+            color: #674719;
+            font-size: 29px;
+            margin: 13px 0;
+        }
+
+        .hours-intro p {
+            color: #806c4c;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .hours-toggle {
+            display: inline-block;
+            min-width: 190px;
+            margin-top: 18px;
+        }
+
+        .hours-toggle .arrow {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .hours-toggle[aria-expanded="true"] .arrow {
+            transform: rotate(180deg);
+        }
+
+        .hours-details {
+            display: none;
+            max-width: 620px;
+            margin: 25px auto 0;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .hours-details.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-7px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fffefa;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .hours-table td {
+            padding: 15px 18px;
+            border-bottom: 1px solid #f2e7c9;
+            font-size: 13px;
+        }
+
+        .hours-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .hours-table td:last-child {
+            text-align: right;
+            font-weight: bold;
+            color: #987020;
+        }
+
+        .closed {
+            color: #a36b4b !important;
+        }
+
+        .hours-note {
+            margin-top: 13px;
+            text-align: center;
+            color: #927c5d;
+            font-size: 12px;
+        }
+
+        /* REVIEW BANNER */
+        .review-banner {
+            margin-top: 50px;
+            padding: 42px 25px;
+            text-align: center;
+            border-radius: 28px;
+            background: #67482b;
+            color: #fff4d7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .review-banner h2 {
+            font-size: 30px;
+            margin-bottom: 14px;
+        }
+
+        .review-banner p {
+            max-width: 530px;
+            margin: auto;
+            color: #f8e8c0;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .review-banner .button {
+            background: #f0cf72;
+            color: #60451f;
+        }
+
+        .review-banner .button:hover {
+            background: #ffe59a;
+        }
+
+        .review-decoration {
+            margin-top: 20px;
+            font-size: 25px;
+            letter-spacing: 5px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #f3d16f;
+            color: #674719;
+            text-align: center;
+            padding: 27px 15px;
+            line-height: 1.9;
+        }
+
+        footer h3 {
+            font-size: 20px;
+            letter-spacing: 4px;
+        }
+
+        footer p {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .footer-note {
+            margin-top: 12px;
+            color: #896a32;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            header {
+                height: 170px;
+                background-position: center;
+            }
+
+            nav a {
+                margin: 8px;
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 52px 18px;
+            }
+
+            .hero h2 {
+                font-size: 35px;
+            }
+
+            .container {
+                width: 92%;
+                margin: 42px auto;
+            }
+
+            .section-heading h2 {
+                font-size: 25px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .card {
+                padding: 25px;
+                min-height: auto;
+            }
+
+            .hours-section {
+                padding: 25px 16px;
+            }
+
+            .hours-intro h2 {
+                font-size: 25px;
+            }
+
+            .hours-table td {
+                padding: 14px 10px;
+                font-size: 12px;
+            }
+
+            .review-banner {
+                padding: 35px 20px;
+            }
+
+            .review-banner h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER GAMBAR -->
+    <header></header>
+
+    <nav>
+        <a href="home.html">🏠 HOME</a>
+        <a href="profile.html">ABOUT US</a>
+        <a href="product.html">🛍️ PRODUCT</a>
+        <a href="checkout.html">🛒 CHECKOUT</a>
+        <a href="contact.html" class="active">📩 CONTACT</a>
+        <a href="review.html">⭐ REVIEW</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <span class="hero-label">♡ WE'D LOVE TO HEAR FROM YOU ♡</span>
+
+        <h2>
+            Let's Talk,<br>
+            <span>Bread Bestie!</span> 🥐
+        </h2>
+
+        <p>
+            Punya pertanyaan atau ingin tahu lebih banyak tentang
+            produk kami? Kami senang bisa terhubung denganmu!
+            Yuk, temukan cara untuk menghubungi SALT & CO.
+        </p>
+
+        <div class="decoration">✦ 🥐 ✦</div>
+    </section>
+
+    <main class="container">
+
+        <!-- CONTACT INFORMATION -->
+        <section>
+            <div class="section-heading">
+                <span>GET IN TOUCH</span>
+                <h2>We Are Just a Message Away! ♡</h2>
+                <p>
+                    Temukan cara paling mudah untuk menghubungi SALT & CO.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+
+                <!-- GOOGLE MAPS -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="icon">📍</div>
+                        <h3>Visit Our Store</h3>
+                        <p>
+                            Yuk, mampir dan temukan salt bread favoritmu!
+                            <br><br>
+                            Jl. Belitung No. 8, Merdeka,<br>
+                            Kec. Sumur Bandung,<br>
+                            Kota Bandung, Jawa Barat 40113
+                        </p>
+
+                        <a class="button"
+                           href="https://www.google.com/maps/search/?api=1&query=Jl.%20Belitung%20No.%208%2C%20Merdeka%2C%20Kecamatan%20Sumur%20Bandung%2C%20Kota%20Bandung%2C%20Jawa%20Barat%2040113"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            📍 OPEN GOOGLE MAPS ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- WHATSAPP -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="icon">💬</div>
+                        <h3>Let's Chat!</h3>
+                        <p>
+                            Ada pertanyaan tentang salt bread kami?
+                            Hubungi kami melalui WhatsApp untuk
+                            mendapatkan informasi lebih lanjut.
+                        </p>
+
+                        <a class="button"
+                           href="https://wa.me/6281234567890"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            CHAT ON WHATSAPP ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="icon">✉️</div>
+                        <h3>Send Us an Email</h3>
+                        <p>
+                            Punya pertanyaan, saran, atau masukan?
+                            Kami akan senang menerima pesan darimu.
+                            <br><br>
+                            saltandco.id@gmail.com
+                        </p>
+
+                        <a class="button"
+                           href="mailto:saltandco.id@gmail.com">
+                            SEND AN EMAIL ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- OPENING HOURS CARD -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="icon">🕒</div>
+                        <h3>Opening Hours</h3>
+                        <p>
+                            Kami siap menyambutmu dari Senin sampai Sabtu.
+                            <br><br>
+                            <b>08.00–17.00 WIB</b>
+                            <br>
+                            Minggu: Tutup
+                        </p>
+
+                        <button class="button"
+                                onclick="toggleHours()"
+                                type="button">
+                            SEE OUR HOURS ↓
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- OPENING HOURS DETAILS -->
+        <section class="hours-section" id="opening-hours">
+
+            <div class="hours-intro">
+                <span class="mini-label">PLAN YOUR VISIT</span>
+
+                <h2>Our Opening Hours ☀️</h2>
+
+                <p>
+                    Mau berkunjung ke toko? Cek jadwal operasional
+                    kami terlebih dahulu, ya!
+                </p>
+
+                <button
+                    class="button hours-toggle"
+                    id="hoursToggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="hoursDetails"
+                    onclick="toggleHours()">
+
+                    SEE OUR HOURS
+                    <span class="arrow"> ↓</span>
+                </button>
+            </div>
+
+            <div class="hours-details" id="hoursDetails" hidden>
+                <table class="hours-table">
+                    <tr>
+                        <td>Senin</td>
+                        <td>08.00–17.00 WIB</td>
+                    </tr>
+                    <tr>
+                        <td>Selasa</td>
+                        <td>08.00–17.00 WIB</td>
+                    </tr>
+                    <tr>
+                        <td>Rabu</td>
+                        <td>08.00–17.00 WIB</td>
+                    </tr>
+                    <tr>
+                        <td>Kamis</td>
+                        <td>08.00–17.00 WIB</td>
+                    </tr>
+                    <tr>
+                        <td>Jumat</td>
+                        <td>08.00–17.00 WIB</td>
+                    </tr>
+                    <tr>
+                        <td>Sabtu</td>
+                        <td>08.00–17.00 WIB</td>
+                    </tr>
+                    <tr>
+                        <td>Minggu</td>
+                        <td class="closed">Tutup</td>
+                    </tr>
+                </table>
+
+                <p class="hours-note">
+                    All times are in Western Indonesia Time (WIB).
+                </p>
+            </div>
+
+        </section>
+
+        <!-- REVIEW BANNER -->
+        <section class="review-banner">
+            <h2>💛 Your Opinion Matters!</h2>
+
+            <p>
+                Sudah mengenal SALT & CO?
+                Kami ingin mendengar pendapat dan pengalamanmu!
+                Masukan darimu berarti bagi kami.
+                <br>
+                Yuk, bagikan ulasanmu!
+            </p>
+
+            <a class="button" href="review.html">
+                ✨ SEND A REVIEW →
+            </a>
+
+            <div class="review-decoration">
+                🥐 · ♡ · ⭐ · ♡ · 🥐
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <h3>SALT & CO 🥐</h3>
+        <p>Freshly Baked · Soft · Delicious</p>
+        <p class="footer-note">
+            Copyright © 2026 SALT & CO Marketplace
+        </p>
+        <p class="footer-note">
+            Made with ♡ and freshly baked every day.
+        </p>
+    </footer>
+
+    <script>
+        function toggleHours() {
+            const details = document.getElementById("hoursDetails");
+            const toggle = document.getElementById("hoursToggle");
+            const isOpen = !details.hidden;
+
+            details.hidden = isOpen;
+            details.classList.toggle("show", !isOpen);
+
+            toggle.setAttribute("aria-expanded", String(!isOpen));
+
+            document.querySelectorAll(".card button").forEach(function(button) {
+                if (button.textContent.includes("SEE OUR HOURS") ||
+                    button.textContent.includes("HIDE OUR HOURS")) {
+                    button.textContent = isOpen
+                        ? "SEE OUR HOURS ↓"
+                        : "HIDE OUR HOURS ↑";
+                }
+            });
+
+            toggle.innerHTML = isOpen
+                ? 'SEE OUR HOURS <span class="arrow"> ↓</span>'
+                : 'HIDE OUR HOURS <span class="arrow"> ↑</span>';
+        }
+    </script>
+
+</body>
+</html>

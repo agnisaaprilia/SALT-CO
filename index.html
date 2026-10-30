@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.:: SALT & CO ::.</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(
+                135deg,
+                #fff4b8,
+                #ffe58a,
+                #fff9dc
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            color: #624516;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            min-height: 600px;
+            background: #fffdf3;
+            border: 4px solid #e2b93b;
+            border-radius: 35px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 15px 35px rgba(126, 91, 17, 0.20);
+        }
+
+        /* BAGIAN KIRI: FOTO INDEX.PNG */
+        .left {
+            width: 48%;
+            background:
+                linear-gradient(
+                    rgba(255, 217, 102, 0.20),
+                    rgba(246, 201, 79, 0.20)
+                ),
+                url("index.png") center center / cover no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            position: relative;
+        }
+
+        .left::before {
+            content: "✦";
+            position: absolute;
+            top: 40px;
+            left: 55px;
+            font-size: 35px;
+            color: #fff8d6;
+        }
+
+        .left::after {
+            content: "✦";
+            position: absolute;
+            bottom: 50px;
+            right: 60px;
+            font-size: 28px;
+            color: #fff8d6;
+        }
+
+        .left-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 25px 15px;
+            background: rgba(255, 249, 220, 0.60);
+            border-radius: 25px;
+        }
+
+        .logo {
+            font-size: 90px;
+            margin-bottom: 20px;
+        }
+
+        .brand {
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #624516;
+            text-shadow: 0 2px 8px rgba(255, 249, 220, 0.5);
+        }
+
+        .tagline {
+            margin-top: 12px;
+            font-size: 18px;
+            color: #624516;
+            line-height: 1.6;
+        }
+
+        .small-text {
+            margin-top: 25px;
+            font-size: 14px;
+            color: #624516;
+            line-height: 1.6;
+        }
+
+        /* BAGIAN KANAN */
+        .right {
+            width: 52%;
+            padding: 65px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hello {
+            font-size: 18px;
+            color: #bd8a20;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 43px;
+            color: #674714;
+            margin-bottom: 18px;
+            line-height: 1.15;
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #77633e;
+            margin-bottom: 28px;
+        }
+
+        .cute-text {
+            font-size: 16px;
+            color: #a47a25;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        /* TOMBOL ENTER SHOP */
+        .enter-button {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            background: #c59124;
+            color: white;
+            padding: 18px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 7px 15px rgba(139, 98, 17, 0.2);
+        }
+
+        .enter-button:hover {
+            background: #a87513;
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            margin-top: 22px;
+            text-align: center;
+            font-size: 14px;
+            color: #9a7b42;
+        }
+
+        /* TAMPILAN HP DAN TABLET */
+        @media (max-width: 800px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .left,
+            .right {
+                width: 100%;
+            }
+
+            .left {
+                min-height: 350px;
+                padding: 35px 20px;
+                background-position: center;
+            }
+
+            .left::before {
+                top: 20px;
+                left: 25px;
+            }
+
+            .left::after {
+                bottom: 20px;
+                right: 25px;
+            }
+
+            .left-content {
+                padding: 20px 10px;
+            }
+
+            .right {
+                padding: 40px 30px;
+            }
+
+            .brand {
+                font-size: 38px;
+            }
+
+            .logo {
+                font-size: 70px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+        }
+
+        /* TAMPILAN HP KECIL */
+        @media (max-width: 400px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                border-radius: 25px;
+            }
+
+            .left {
+                min-height: 300px;
+            }
+
+            .right {
+                padding: 30px 22px;
+            }
+
+            .brand {
+                font-size: 32px;
+            }
+
+            .logo {
+                font-size: 60px;
+            }
+
+            h1 {
+                font-size: 29px;
+            }
+
+            .hello {
+                font-size: 15px;
+            }
+
+            .enter-button {
+                font-size: 16px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- BAGIAN KIRI: FOTO INDEX.PNG DAN BRAND -->
+        <div class="left">
+
+            <div class="left-content">
+
+                <div class="logo">🥐✨</div>
+
+                <div class="brand">
+                    SALT & CO
+                </div>
+
+                <div class="tagline">
+                    Freshly Baked • Soft • Delicious 🤎
+                </div>
+
+                <div class="small-text">
+                    🧈 Made with love & a little bit of magic ✨
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BAGIAN KANAN: WELCOME -->
+        <div class="right">
+
+            <div class="hello">
+                👋 HELLO, BREAD LOVERS!
+            </div>
+
+            <h1>
+                Welcome to<br>
+                SALT & CO! 🥐
+            </h1>
+
+            <div class="description">
+                Tempatnya kamu menemukan
+                <b>salt bread yang fresh, lembut,
+                dan pastinya bikin happy!</b> 🤍
+            </div>
+
+            <div class="cute-text">
+                ✨ Fresh from the oven, straight to your heart! ✨
+            </div>
+
+            <!-- TOMBOL MENUJU HALAMAN HOME -->
+            <a href="home.html" class="enter-button">
+                🛒 ENTER SHOP
+            </a>
+
+            <div class="footer">
+                🥐 Freshly baked with love ♡
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

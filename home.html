@@ -1,0 +1,724 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALT & CO - Home</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fffaf0;
+            color: #5c4026;
+        }
+
+        /* HEADER FOTO SAJA */
+        header {
+            background: url("header.png") center center / cover no-repeat;
+            width: 100%;
+            height: 250px;
+            padding: 0;
+        }
+
+        nav {
+            background: #fff0bd;
+            padding: 17px 10px;
+            text-align: center;
+            border-bottom: 1px solid #f0dfad;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #60451f;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 6px 12px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #c18b20;
+            transform: translateY(-2px);
+        }
+
+        .home {
+            padding: 65px 20px;
+            text-align: center;
+            background:
+                radial-gradient(circle at 10% 20%, #fff8d9 0 9%, transparent 10%),
+                radial-gradient(circle at 90% 80%, #ffe8a3 0 10%, transparent 11%),
+                linear-gradient(135deg, #fff1bd, #fff9e9);
+        }
+
+        .tagline {
+            display: inline-block;
+            background: #fffdf4;
+            color: #9c7027;
+            padding: 9px 17px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .home h2 {
+            font-size: 43px;
+            line-height: 1.2;
+            margin: 22px 0 15px;
+        }
+
+        .home h2 span {
+            color: #c18b20;
+        }
+
+        .home p {
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .button {
+            display: inline-block;
+            background: #c99527;
+            color: white;
+            padding: 15px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 25px;
+            font-weight: bold;
+            box-shadow: 0 5px 12px #d9bd7960;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #a87918;
+            transform: translateY(-3px);
+        }
+
+        .small-note {
+            margin-top: 18px !important;
+            font-size: 12px !important;
+            color: #987d5b;
+        }
+
+        .announcement {
+            background: #67482b;
+            color: #fff2ca;
+            padding: 14px 10px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .best {
+            padding: 55px 18px 65px;
+            text-align: center;
+        }
+
+        .section-label {
+            color: #bd8b30;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .best h2 {
+            font-size: 30px;
+            margin: 12px 0;
+        }
+
+        .section-desc {
+            color: #8d775b;
+            font-size: 14px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: #fffefa;
+            border: 1px solid #f0e1bd;
+            border-radius: 20px;
+            width: 220px;
+            padding: 23px 15px;
+            box-shadow: 0 5px 18px #78572b0b;
+            transition: 0.3s;
+            cursor: pointer;
+            color: inherit;
+            font-family: inherit;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px #9d78351b;
+            border-color: #e5c56e;
+        }
+
+        .product-icon {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 16px;
+            background: #fff3cd;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 43px;
+            overflow: hidden;
+        }
+
+        .product-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            font-size: 17px;
+            margin: 10px 0;
+            color: #694923;
+        }
+
+        .price {
+            color: #b37b17;
+            font-size: 19px;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+        .detail-hint {
+            color: #a47a25;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .promo {
+            margin: 0 20px 55px;
+            padding: 32px 20px;
+            border-radius: 25px;
+            background: linear-gradient(120deg, #ffe8a0, #fff5d4);
+            text-align: center;
+            border: 1px solid #f0d68b;
+        }
+
+        .promo h2 {
+            font-size: 25px;
+            margin: 0 0 12px;
+        }
+
+        .promo p {
+            font-size: 14px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .promo .button {
+            margin-top: 18px;
+            padding: 12px 25px;
+        }
+
+        footer {
+            background: #67482b;
+            color: #fff3d4;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer h3 {
+            letter-spacing: 3px;
+            margin: 0 0 10px;
+        }
+
+        footer p {
+            font-size: 12px;
+            line-height: 1.8;
+            margin: 6px 0;
+        }
+
+        /* POP-UP DETAIL PRODUK */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(55, 37, 15, 0.65);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 18px;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #fffdf5;
+            width: 100%;
+            max-width: 430px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 15px 40px #00000025;
+            animation: appear 0.25s ease;
+            margin: auto;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(15px) scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 16px;
+            top: 12px;
+            border: none;
+            background: #fff0bd;
+            color: #67482b;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .detail-image {
+            width: 180px;
+            height: 180px;
+            margin: 12px auto 20px;
+            background: #fff3cd;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 75px;
+            overflow: hidden;
+        }
+
+        .detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .detail-label {
+            color: #bd8b30;
+            font-size: 11px;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .modal-content h2 {
+            color: #674714;
+            font-size: 27px;
+            margin: 10px 0;
+        }
+
+        .detail-price {
+            font-size: 23px;
+            font-weight: bold;
+            color: #bd8b30;
+            margin: 12px 0 18px;
+        }
+
+        .detail-description {
+            font-size: 14px;
+            color: #77633e;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            background: #fff5d7;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: left;
+            font-size: 13px;
+            line-height: 1.9;
+            color: #67482b;
+        }
+
+        .close-button {
+            margin-top: 22px;
+            padding: 12px 28px;
+        }
+
+        /* TAMPILAN HP */
+        @media (max-width: 600px) {
+            header {
+                height: 170px;
+                background-position: center;
+            }
+
+            nav a {
+                margin: 7px;
+                font-size: 11px;
+            }
+
+            .home {
+                padding: 55px 18px;
+            }
+
+            .home h2 {
+                font-size: 34px;
+            }
+
+            .best h2 {
+                font-size: 26px;
+            }
+
+            .card {
+                width: calc(50% - 10px);
+                padding: 18px 9px;
+            }
+
+            .product-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 35px;
+            }
+
+            .card h3 {
+                font-size: 14px;
+            }
+
+            .price {
+                font-size: 16px;
+            }
+
+            .promo h2 {
+                font-size: 21px;
+            }
+
+            .modal-content {
+                padding: 25px 20px;
+            }
+
+            .detail-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER HANYA FOTO -->
+    <header></header>
+
+    <nav>
+        <a href="home.html">🏠 HOME</a>
+        <a href="profile.html">ABOUT US</a>
+        <a href="product.html">🛍️ PRODUCT</a>
+        <a href="checkout.html">🛒 CHECKOUT</a>
+        <a href="contact.html">📩 CONTACT</a>
+        <a href="review.html">⭐ REVIEW</a>
+    </nav>
+
+    <section class="home">
+        <span class="tagline">♡ MADE FRESH WITH LOVE ♡</span>
+
+        <h2>
+            A Little Bite,<br>
+            <span>A Lot of Happiness!</span>
+        </h2>
+
+        <p>
+            Welcome to SALT & CO! 🥐<br>
+            Temukan salt bread favoritmu dengan pilihan rasa
+            yang bikin harimu makin manis.
+        </p>
+
+        <p class="small-note">
+            ✨ Freshly baked happiness, just for you ✨
+        </p>
+    </section>
+
+    <div class="announcement">
+        🥐 FRESHLY BAKED • MADE WITH LOVE • EVERY BITE MATTERS 🥐
+    </div>
+
+    <section class="best" id="menu">
+        <span class="section-label">OUR SPECIAL MENU</span>
+        <h2>Meet Your New Favorite! ♡</h2>
+
+        <p class="section-desc">
+            Dari rasa klasik sampai rasa favoritmu,<br>
+            ada sesuatu yang spesial di setiap gigitan.
+            <br><br>
+            ✨ Klik produk untuk melihat informasi lengkapnya!
+        </p>
+
+        <div class="products" id="products"></div>
+    </section>
+
+    <section class="promo">
+        <h2>💛 Your Happiness Is One Bite Away!</h2>
+
+        <p>
+            Penasaran dengan pilihan rasa SALT & CO?<br>
+            Klik salah satu produk untuk mengenal rasa dan
+            karakteristiknya lebih dekat!
+        </p>
+
+        <a class="button" href="product.html">
+            EXPLORE OUR PRODUCTS →
+        </a>
+    </section>
+
+    <footer>
+        <h3>SALT & CO 🥐</h3>
+        <p>Freshly Baked · Soft · Delicious</p>
+        <p>Copyright © 2026 SALT & CO Marketplace</p>
+        <p>Made with ♡ and freshly baked every day.</p>
+    </footer>
+
+    <!-- POP-UP INFORMASI PRODUK -->
+    <div class="modal" id="productModal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="detailName"
+         onclick="closeOutside(event)">
+
+        <div class="modal-content">
+
+            <button class="close"
+                    onclick="closeModal()"
+                    aria-label="Tutup">&times;</button>
+
+            <span class="detail-label">GET TO KNOW YOUR BREAD</span>
+
+            <div class="detail-image" id="detailImage">🥐</div>
+
+            <h2 id="detailName">Nama Produk</h2>
+
+            <p class="detail-price" id="detailPrice">Rp0</p>
+
+            <p class="detail-description" id="detailDescription"></p>
+
+            <div class="info-box">
+                <strong>🥐 INFORMASI PRODUK</strong>
+                <div id="detailInfo"></div>
+            </div>
+
+            <button class="button close-button" onclick="closeModal()">
+                KEMBALI KE MENU
+            </button>
+
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            {
+                name: "Strawberry Salt Bread",
+                price: "Rp21.000",
+                image: "strawberry.png",
+                emoji: "🍓",
+                description:
+                    "Salt bread dengan sentuhan rasa strawberry yang manis dan fruity. Pilihan menarik untuk kamu yang menyukai perpaduan roti gurih dengan cita rasa buah.",
+                info: [
+                    "Varian: Strawberry",
+                    "Karakter rasa: Manis dan fruity",
+                    "Tekstur: Lembut dengan bagian luar yang dapat terasa renyah",
+                    "Harga: Rp21.000"
+                ]
+            },
+            {
+                name: "Chocolate Salt Bread",
+                price: "Rp21.000",
+                image: "chocolate.png",
+                emoji: "🍫",
+                description:
+                    "Salt bread dengan cita rasa cokelat yang kaya dan manis. Cocok untuk pencinta cokelat yang ingin menikmati camilan dengan perpaduan rasa manis dan gurih.",
+                info: [
+                    "Varian: Chocolate",
+                    "Karakter rasa: Manis dan cokelat",
+                    "Tekstur: Lembut",
+                    "Harga: Rp21.000"
+                ]
+            },
+            {
+                name: "Original Salt Bread",
+                price: "Rp18.000",
+                image: "original.png",
+                emoji: "🥐",
+                description:
+                    "Varian klasik tanpa isian tambahan, dengan cita rasa gurih, aroma butter, dan sentuhan asin yang khas. Pilihan sederhana untuk menikmati karakter salt bread.",
+                info: [
+                    "Varian: Original",
+                    "Karakter rasa: Gurih dan sedikit asin",
+                    "Isian: Tanpa isian tambahan",
+                    "Tekstur: Lembut dengan bagian luar yang dapat terasa renyah",
+                    "Harga: Rp18.000"
+                ]
+            },
+            {
+                name: "Ham & Cheese Salt Bread",
+                price: "Rp23.000",
+                image: "hamncheese.png",
+                emoji: "🧀",
+                description:
+                    "Salt bread dengan perpaduan ham dan keju yang memberikan cita rasa gurih dan creamy. Cocok untuk kamu yang menyukai pilihan roti dengan rasa savory.",
+                info: [
+                    "Varian: Ham & Cheese",
+                    "Karakter rasa: Gurih dan creamy",
+                    "Isi atau topping: Ham dan keju",
+                    "Harga: Rp23.000"
+                ]
+            },
+            {
+                name: "Dancow Salt Bread",
+                price: "Rp21.000",
+                image: "dancow.png",
+                emoji: "🥛",
+                description:
+                    "Salt bread dengan taburan susu bubuk Dancow yang memberikan cita rasa susu putih yang manis, creamy, dan lembut. Cocok untuk pencinta susu.",
+                info: [
+                    "Varian: Dancow",
+                    "Karakter rasa: Susu putih, manis, dan creamy",
+                    "Cita rasa: Milky dengan sentuhan gurih",
+                    "Harga: Rp21.000"
+                ]
+            },
+            {
+                name: "Bolognese Salt Bread",
+                price: "Rp21.000",
+                image: "bolognese.png",
+                emoji: "🍅",
+                description:
+                    "Salt bread dengan inspirasi saus bolognese yang gurih dan kaya rasa. Perpaduan cita rasa tomat dan bumbu savory cocok untuk kamu yang menyukai camilan asin.",
+                info: [
+                    "Varian: Bolognese",
+                    "Karakter rasa: Gurih dan savory",
+                    "Inspirasi rasa: Saus bolognese",
+                    "Harga: Rp21.000"
+                ]
+            }
+        ];
+
+        const productsContainer = document.getElementById("products");
+
+        // Menampilkan kartu produk.
+        function renderProducts() {
+            productsContainer.innerHTML = products.map(
+                (product, index) => `
+                    <button class="card"
+                            type="button"
+                            onclick="showProduct(${index})"
+                            aria-label="Lihat detail ${product.name}">
+                        <div class="product-icon">
+                            <img
+                                src="${product.image}"
+                                alt="${product.name}"
+                                onerror="this.style.display='none';
+                                this.parentElement.textContent='${product.emoji}';">
+                        </div>
+                        <h3>${product.name}</h3>
+                        <p class="price">${product.price}</p>
+                        <p class="detail-hint">Lihat Detail →</p>
+                    </button>
+                `
+            ).join("");
+        }
+
+        // Menampilkan detail produk.
+        function showProduct(index) {
+            const product = products[index];
+
+            if (!product) return;
+
+            document.getElementById("detailName").textContent =
+                product.name;
+
+            document.getElementById("detailPrice").textContent =
+                product.price;
+
+            document.getElementById("detailDescription").textContent =
+                product.description;
+
+            const imageBox = document.getElementById("detailImage");
+            imageBox.innerHTML = "";
+
+            const img = document.createElement("img");
+            img.src = product.image;
+            img.alt = product.name;
+
+            img.onerror = function () {
+                imageBox.textContent = product.emoji;
+            };
+
+            imageBox.appendChild(img);
+
+            const infoBox = document.getElementById("detailInfo");
+            infoBox.innerHTML = "";
+
+            product.info.forEach(function (item) {
+                const line = document.createElement("div");
+                line.textContent = "• " + item;
+                infoBox.appendChild(line);
+            });
+
+            document.getElementById("productModal").classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        // Menutup pop-up.
+        function closeModal() {
+            document.getElementById("productModal").classList.remove("active");
+            document.body.style.overflow = "";
+        }
+
+        // Menutup pop-up saat area gelap di luar kotak diklik.
+        function closeOutside(event) {
+            if (event.target.id === "productModal") {
+                closeModal();
+            }
+        }
+
+        // Menutup pop-up dengan tombol Escape.
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+
+        // Jalankan saat halaman dibuka.
+        renderProducts();
+    </script>
+
+</body>
+</html>

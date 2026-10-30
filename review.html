@@ -1,0 +1,1074 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SALT & CO - Customer Reviews</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fffaf0;
+            color: #5c4026;
+        }
+
+        /* HEADER */
+        header {
+            background: url("header.png") center center / cover no-repeat;
+            width: 100%;
+            height: 250px;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: #fff0bd;
+            padding: 16px 10px;
+            text-align: center;
+            border-bottom: 1px solid #f0dfad;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #60451f;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 6px 10px;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #c18b20;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 55px 20px 45px;
+            background:
+                radial-gradient(circle at 12% 20%, #fff8d9 0 8%, transparent 9%),
+                radial-gradient(circle at 88% 75%, #ffe8a3 0 9%, transparent 10%),
+                linear-gradient(135deg, #fff1bd, #fff9e9);
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: #fffdf4;
+            color: #a87918;
+            padding: 9px 17px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .hero h2 {
+            font-size: 39px;
+            line-height: 1.25;
+            margin: 20px 0 12px;
+        }
+
+        .hero h2 span {
+            color: #c18b20;
+        }
+
+        .hero p {
+            max-width: 510px;
+            margin: auto;
+            font-size: 14px;
+            line-height: 1.9;
+            color: #806746;
+        }
+
+        /* REVIEW CONTAINER */
+        .review-container {
+            max-width: 850px;
+            margin: 40px auto 65px;
+            padding: 0 18px;
+        }
+
+        .review-card {
+            background: #fffefa;
+            border: 1px solid #f0e1bd;
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 10px 30px #78572b12;
+        }
+
+        .form-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-heading .emoji {
+            font-size: 38px;
+        }
+
+        .form-heading h3 {
+            font-size: 24px;
+            margin: 12px 0 8px;
+        }
+
+        .form-heading p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #987d5b;
+        }
+
+        /* FORM */
+        .field {
+            margin-bottom: 25px;
+        }
+
+        .field > label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #67482b;
+        }
+
+        .field input:not([type="checkbox"]),
+        .field select,
+        .field textarea {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #ead8aa;
+            border-radius: 12px;
+            background: #fffdf7;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #5c4026;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: #c99527;
+            box-shadow: 0 0 0 3px #f6d77845;
+        }
+
+        .field textarea {
+            min-height: 125px;
+            resize: vertical;
+            line-height: 1.7;
+        }
+
+        /* PRODUCT INSTRUCTION */
+        .product-instruction {
+            font-size: 12px;
+            color: #987d5b;
+            margin: -2px 0 15px;
+            line-height: 1.6;
+        }
+
+        .product-category {
+            color: #a87918;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 25px 0 13px;
+        }
+
+        /* PRODUCT GRID */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .product-option {
+            position: relative;
+            cursor: pointer;
+            min-width: 0;
+        }
+
+        .product-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .product-box {
+            display: block;
+            height: 100%;
+            background: #fffdf7;
+            border: 2px solid #eee1c5;
+            border-radius: 17px;
+            padding: 10px;
+            text-align: center;
+            transition: 0.25s;
+        }
+
+        .product-box img {
+            width: 100%;
+            height: 125px;
+            object-fit: contain;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .product-name {
+            display: block;
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #67482b;
+            min-height: 30px;
+        }
+
+        .check-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 21px;
+            height: 21px;
+            border: 1px solid #d8c59c;
+            border-radius: 6px;
+            margin-top: 9px;
+            color: transparent;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .product-option input:checked + .product-box {
+            border-color: #c99527;
+            background: #fff5d7;
+            box-shadow: 0 4px 12px #c9952725;
+        }
+
+        .product-option input:checked + .product-box .check-icon {
+            background: #c99527;
+            border-color: #c99527;
+            color: white;
+        }
+
+        .product-option input:focus-visible + .product-box {
+            outline: 3px solid #e9ad24;
+            outline-offset: 3px;
+        }
+
+        /* SELECTED PRODUCTS */
+        .selected-products {
+            margin-top: 18px;
+            padding: 13px 15px;
+            background: #fff8e6;
+            border-radius: 10px;
+            color: #987d5b;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* RATING */
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0 8px;
+        }
+
+        .stars button {
+            border: none;
+            background: transparent;
+            color: #e5d8bc;
+            font-size: 39px;
+            cursor: pointer;
+            padding: 0;
+            transition: 0.2s;
+        }
+
+        .stars button:hover {
+            transform: scale(1.15);
+        }
+
+        .stars button.selected {
+            color: #e9ad24;
+        }
+
+        .rating-text {
+            text-align: center;
+            font-size: 13px;
+            color: #a87918;
+            font-weight: bold;
+            min-height: 20px;
+        }
+
+        /* SUBMIT BUTTON */
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: #c99527;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 12px #d9bd7960;
+        }
+
+        .submit-button:hover {
+            background: #a87918;
+            transform: translateY(-2px);
+        }
+
+        .note {
+            text-align: center;
+            color: #a18b6b;
+            font-size: 11px;
+            line-height: 1.7;
+            margin-top: 18px;
+        }
+
+        /* THANK YOU */
+        .thank-you {
+            display: none;
+            background: #fff5d7;
+            border: 1px solid #f0d68b;
+            border-radius: 18px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 22px;
+        }
+
+        .thank-you.show {
+            display: block;
+        }
+
+        .thank-you h3 {
+            margin: 8px 0;
+            color: #a87918;
+        }
+
+        .thank-you p {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-home a {
+            color: #a87918;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #67482b;
+            color: #fff3d4;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer h3 {
+            letter-spacing: 3px;
+            margin: 0 0 10px;
+        }
+
+        footer p {
+            font-size: 12px;
+            line-height: 1.8;
+            margin: 6px 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            header {
+                height: 170px;
+                background-position: center;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .product-box img {
+                height: 115px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav a {
+                margin: 7px;
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 45px 18px;
+            }
+
+            .hero h2 {
+                font-size: 31px;
+            }
+
+            .review-card {
+                padding: 25px 18px;
+            }
+
+            .form-heading h3 {
+                font-size: 21px;
+            }
+
+            .stars {
+                gap: 7px;
+            }
+
+            .stars button {
+                font-size: 35px;
+            }
+
+            .product-name {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header></header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="home.html">🏠 HOME</a>
+        <a href="profile.html">ABOUT US</a>
+        <a href="product.html">🛍️ PRODUCT</a>
+        <a href="checkout.html">🛒 CHECKOUT</a>
+        <a href="contact.html">📩 CONTACT</a>
+        <a href="review.html" class="active">⭐ REVIEW</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <span class="hero-label">♡ YOUR VOICE MATTERS ♡</span>
+
+        <h2>
+            How Was Your<br>
+            <span>Salt Bread Experience?</span>
+        </h2>
+
+        <p>
+            Sudah mencoba salt bread dari SALT & CO? 🥐💛<br>
+            Kami ingin tahu pendapatmu tentang rasa, tekstur,
+            dan pengalamanmu setelah mencoba produk kami.
+            Yuk, bagikan ulasanmu!
+        </p>
+
+    </section>
+
+    <!-- REVIEW FORM -->
+    <main class="review-container">
+
+        <div class="review-card">
+
+            <div class="form-heading">
+                <div class="emoji">💌</div>
+
+                <h3>Share Your Thoughts</h3>
+
+                <p>
+                    Ceritakan pengalamanmu setelah membeli
+                    salt bread SALT & CO.<br>
+                    Setiap ulasan sangat berarti bagi kami!
+                </p>
+            </div>
+
+            <form id="reviewForm">
+
+                <!-- NAMA -->
+                <div class="field">
+
+                    <label for="customerName">
+                        👤 Nama kamu
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Masukkan nama kamu"
+                        required
+                        maxlength="60">
+
+                </div>
+
+                <!-- PILIH PRODUK -->
+                <div class="field">
+
+                    <label>
+                        🥐 Salt bread apa saja yang kamu beli?
+                    </label>
+
+                    <p class="product-instruction">
+                        Kamu bisa memilih lebih dari satu produk.
+                        Klik gambar produk yang kamu beli, ya!
+                    </p>
+
+                    <!-- PRODUK SATUAN -->
+                    <p class="product-category">
+                        ♡ PRODUK SATUAN
+                    </p>
+
+                    <div class="product-grid">
+
+                        <label class="product-option">
+                            <input
+                                type="checkbox"
+                                name="products"
+                                value="Chocolate">
+
+                            <span class="product-box">
+                                <img
+                                    src="chocolate.png"
+                                    alt="Salt Bread Chocolate">
+
+                                <span class="product-name">
+                                    Chocolate
+                                </span>
+
+                                <span class="check-icon">✓</span>
+                            </span>
+                        </label>
+
+                        <label class="product-option">
+                            <input
+                                type="checkbox"
+                                name="products"
+                                value="Dancow">
+
+                            <span class="product-box">
+                                <img
+                                    src="dancow.png"
+                                    alt="Salt Bread Dancow">
+
+                                <span class="product-name">
+                                    Dancow
+                                </span>
+
+                                <span class="check-icon">✓</span>
+                            </span>
+                        </label>
+
+                        <label class="product-option">
+                            <input
+                                type="checkbox"
+                                name="products"
+                                value="Ham & Cheese">
+
+                            <span class="product-box">
+                                <img
+                                    src="hamncheese.png"
+                                    alt="Salt Bread Ham and Cheese">
+
+                                <span class="product-name">
+                                    Ham & Cheese
+                                </span>
+
+                                <span class="check-icon">✓</span>
+                            </span>
+                        </label>
+
+                        <label class="product-option">
+                            <input
+                                type="checkbox"
+                                name="products"
+                                value="Bolognese">
+
+                            <span class="product-box">
+                                <img
+                                    src="bolognese.png"
+                                    alt="Salt Bread Bolognese">
+
+                                <span class="product-name">
+                                    Bolognese
+                                </span>
+
+                                <span class="check-icon">✓</span>
+                            </span>
+                        </label>
+
+                        <label class="product-option">
+                            <input
+                                type="checkbox"
+                                name="products"
+                                value="Original">
+
+                            <span class="product-box">
+                                <img
+                                    src="original.png"
+                                    alt="Salt Bread Original">
+
+                                <span class="product-name">
+                                    Original
+                                </span>
+
+                                <span class="check-icon">✓</span>
+                            </span>
+                        </label>
+
+                        <label class="product-option">
+                            <input
+                                type="checkbox"
+                                name="products"
+                                value="Strawberry">
+
+                            <span class="product-box">
+                                <img
+                                    src="strawberry.png"
+                                    alt="Salt Bread Strawberry">
+
+                                <span class="product-name">
+                                    Strawberry
+                                </span>
+
+                                <span class="check-icon">✓</span>
+                            </span>
+                        </label>
+
+                    </div>
+
+                    <!-- BUNDLING -->
+                    <p class="product-category">
+                        🎀 SPECIAL BUNDLING PROMO
+                    </p>
+
+                    <div class="product-grid">
+
+                        <label class="product-option">
+                            <input
+                                type="checkbox"
+                                name="products"
+                                value="Savory Bundle">
+
+                            <span class="product-box">
+                                <img
+                                    src="bundle asin.png"
+                                    alt="Savory Bundle">
+
+                                <span class="product-name">
+                                    Savory Bundle
+                                </span>
+
+                                <span class="check-icon">✓</span>
+                            </span>
+                        </label>
+
+                        <label class="product-option">
+                            <input
+                                type="checkbox"
+                                name="products"
+                                value="Sweettooth Bundle">
+
+                            <span class="product-box">
+                                <img
+                                    src="bundle manis.png"
+                                    alt="Sweettooth Bundle">
+
+                                <span class="product-name">
+                                    Sweettooth Bundle
+                                </span>
+
+                                <span class="check-icon">✓</span>
+                            </span>
+                        </label>
+
+                        <label class="product-option">
+                            <input
+                                type="checkbox"
+                                name="products"
+                                value="All in One Bundle">
+
+                            <span class="product-box">
+                                <img
+                                    src="bundle semua.png"
+                                    alt="All in One Bundle">
+
+                                <span class="product-name">
+                                    All in One Bundle
+                                </span>
+
+                                <span class="check-icon">✓</span>
+                            </span>
+                        </label>
+
+                    </div>
+
+                    <!-- PRODUK YANG DIPILIH -->
+                    <div class="selected-products" id="selectedProducts">
+                        Belum ada produk yang dipilih.
+                    </div>
+
+                </div>
+
+                <!-- RATING -->
+                <div class="field">
+
+                    <label>
+                        ⭐ Bagaimana rasa salt bread yang kamu coba?
+                    </label>
+
+                    <div class="stars" role="group"
+                         aria-label="Pilih rating dari 1 sampai 5 bintang">
+
+                        <button type="button" data-rating="1"
+                                aria-label="1 bintang"
+                                aria-pressed="false">★</button>
+
+                        <button type="button" data-rating="2"
+                                aria-label="2 bintang"
+                                aria-pressed="false">★</button>
+
+                        <button type="button" data-rating="3"
+                                aria-label="3 bintang"
+                                aria-pressed="false">★</button>
+
+                        <button type="button" data-rating="4"
+                                aria-label="4 bintang"
+                                aria-pressed="false">★</button>
+
+                        <button type="button" data-rating="5"
+                                aria-label="5 bintang"
+                                aria-pressed="false">★</button>
+
+                    </div>
+
+                    <p class="rating-text" id="ratingText">
+                        Pilih jumlah bintangmu!
+                    </p>
+
+                </div>
+
+                <!-- PENGALAMAN -->
+                <div class="field">
+
+                    <label for="productExperience">
+                        💛 Bagaimana pendapatmu setelah mencoba salt bread kami?
+                    </label>
+
+                    <select id="productExperience" required>
+
+                        <option value="">
+                            Pilih pengalamanmu
+                        </option>
+
+                        <option value="Sangat enak dan memuaskan">
+                            Sangat enak dan memuaskan
+                        </option>
+
+                        <option value="Enak dan sesuai ekspektasi">
+                            Enak dan sesuai ekspektasi
+                        </option>
+
+                        <option value="Cukup enak">
+                            Cukup enak
+                        </option>
+
+                        <option value="Masih perlu ditingkatkan">
+                            Masih perlu ditingkatkan
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- ULASAN -->
+                <div class="field">
+
+                    <label for="reviewMessage">
+                        💬 Ceritakan pengalamanmu!
+                    </label>
+
+                    <textarea
+                        id="reviewMessage"
+                        placeholder="Contoh: Aku beli Chocolate dan Original. Keduanya enak banget! Teksturnya lembut dan rasanya gurih. Bakal beli lagi!"
+                        required
+                        maxlength="1000"></textarea>
+
+                </div>
+
+                <!-- SUBMIT -->
+                <button type="submit" class="submit-button">
+                    SEND MY REVIEW ♡
+                </button>
+
+                <p class="note">
+                    Terima kasih sudah membeli dan mencoba salt bread
+                    SALT & CO! Pendapatmu membantu kami menjadi lebih baik 🥐💛
+                </p>
+
+            </form>
+
+            <!-- THANK YOU -->
+            <div class="thank-you" id="thankYou">
+
+                <div style="font-size: 40px;">💛🥐</div>
+
+                <h3>Thank You for Your Review!</h3>
+
+                <p id="thankYouMessage"></p>
+
+                <p>
+                    Pendapatmu berharga bagi SALT & CO.
+                    Semoga kamu menikmati setiap gigitan salt bread kami!
+                </p>
+
+                <button
+                    type="button"
+                    class="submit-button"
+                    onclick="writeAnotherReview()">
+
+                    WRITE ANOTHER REVIEW
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="back-home">
+            <a href="home.html">← BACK TO HOME</a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>SALT & CO 🥐</h3>
+
+        <p>Freshly Baked · Soft · Delicious</p>
+
+        <p>Thank you for being part of our story ♡</p>
+
+        <p>Copyright © 2026 SALT & CO Marketplace</p>
+
+    </footer>
+
+    <script>
+
+        let selectedRating = 0;
+
+        const starButtons = document.querySelectorAll(
+            ".stars button"
+        );
+
+        const ratingText = document.getElementById(
+            "ratingText"
+        );
+
+        const productCheckboxes = document.querySelectorAll(
+            'input[name="products"]'
+        );
+
+        const selectedProductsText = document.getElementById(
+            "selectedProducts"
+        );
+
+        const ratingMessages = {
+            1: "😕 Kami akan berusaha lebih baik.",
+            2: "🙂 Masih ada yang perlu ditingkatkan.",
+            3: "😊 Cukup baik, terima kasih!",
+            4: "🥰 Senang kamu menyukainya!",
+            5: "💛 Wah, pengalaman yang luar biasa!"
+        };
+
+        // UPDATE PRODUK YANG DIPILIH
+        function updateSelectedProducts() {
+
+            const selectedProducts = Array.from(productCheckboxes)
+                .filter(function(checkbox) {
+                    return checkbox.checked;
+                })
+                .map(function(checkbox) {
+                    return checkbox.value;
+                });
+
+            if (selectedProducts.length === 0) {
+
+                selectedProductsText.textContent =
+                    "Belum ada produk yang dipilih.";
+
+            } else {
+
+                selectedProductsText.textContent =
+                    "Produk yang kamu pilih: " +
+                    selectedProducts.join(", ");
+
+            }
+        }
+
+        // EVENT CHECKBOX PRODUK
+        productCheckboxes.forEach(function(checkbox) {
+
+            checkbox.addEventListener(
+                "change",
+                updateSelectedProducts
+            );
+
+        });
+
+        // PILIH RATING BINTANG
+        starButtons.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                selectedRating = Number(
+                    button.dataset.rating
+                );
+
+                starButtons.forEach(function(star) {
+
+                    const rating = Number(
+                        star.dataset.rating
+                    );
+
+                    star.classList.toggle(
+                        "selected",
+                        rating <= selectedRating
+                    );
+
+                    star.setAttribute(
+                        "aria-pressed",
+                        rating === selectedRating ? "true" : "false"
+                    );
+
+                });
+
+                ratingText.textContent =
+                    ratingMessages[selectedRating];
+
+            });
+
+        });
+
+        // KIRIM REVIEW
+        document.getElementById("reviewForm").addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                // CEK RATING
+                if (selectedRating === 0) {
+
+                    ratingText.textContent =
+                        "Yuk, pilih bintang terlebih dahulu! ⭐";
+
+                    return;
+                }
+
+                // CEK PRODUK
+                const selectedProducts = Array.from(productCheckboxes)
+                    .filter(function(checkbox) {
+                        return checkbox.checked;
+                    })
+                    .map(function(checkbox) {
+                        return checkbox.value;
+                    });
+
+                if (selectedProducts.length === 0) {
+
+                    selectedProductsText.textContent =
+                        "Pilih minimal satu produk terlebih dahulu! 🥐";
+
+                    document.querySelector(".product-grid").scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                    return;
+                }
+
+                // AMBIL DATA FORM
+                const name = document
+                    .getElementById("customerName")
+                    .value.trim();
+
+                const experience = document
+                    .getElementById("productExperience")
+                    .value;
+
+                const message = document
+                    .getElementById("reviewMessage")
+                    .value.trim();
+
+                const productList = selectedProducts.join(", ");
+
+                // TAMPILKAN UCAPAN TERIMA KASIH
+                document.getElementById("thankYouMessage").textContent =
+                    "Terima kasih, " + name +
+                    "! Kamu sudah mencoba: " + productList +
+                    ". Pengalamanmu: " + experience +
+                    ". Rating yang kamu berikan: " +
+                    selectedRating + " dari 5 bintang. " +
+                    "Ulasanmu: \"" + message + "\"";
+
+                document.getElementById("reviewForm").style.display =
+                    "none";
+
+                document.getElementById("thankYou").classList.add("show");
+
+                document.getElementById("thankYou").scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }
+        );
+
+        // TULIS REVIEW LAGI
+        function writeAnotherReview() {
+
+            document.getElementById("reviewForm").reset();
+
+            document.getElementById("reviewForm").style.display =
+                "block";
+
+            document.getElementById("thankYou").classList.remove("show");
+
+            selectedRating = 0;
+
+            starButtons.forEach(function(star) {
+
+                star.classList.remove("selected");
+
+                star.setAttribute("aria-pressed", "false");
+
+            });
+
+            ratingText.textContent =
+                "Pilih jumlah bintangmu!";
+
+            updateSelectedProducts();
+
+            document.getElementById("reviewForm").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
